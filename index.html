@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parkhyeonwoo – Graphic Archive</title>
+<style>
+@font-face{font-family:'Space Mono';src:url(fonts/SpaceMono-Regular.ttf);font-weight:400}
+@font-face{font-family:'Space Mono';src:url(fonts/SpaceMono-Bold.ttf);font-weight:700}
+:root{--mono:'Space Mono','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',monospace}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:#fff radial-gradient(#0003 1px,transparent 1.5px) 0 0/12px 12px;color:#000;font:400 13px/1.5 var(--mono);overflow:hidden;cursor:crosshair}
+button{font:inherit;color:inherit;cursor:inherit}
+:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 6px #fff}
+.tag{background:#000;color:#fff;padding:0 .4em;display:inline-block;margin:0}
+header{position:fixed;left:20px;top:16px;z-index:3;pointer-events:none}
+header h1{font-size:clamp(28px,5.5vw,60px);line-height:1.15;font-weight:700;letter-spacing:-.04em}
+header p{margin:4px 0 0}
+#trail{position:fixed;inset:0;width:100%;height:100%;image-rendering:pixelated;pointer-events:none;z-index:1}
+#desk{position:fixed;inset:0}
+.folder{position:absolute;width:150px;background:none;border:0;padding:0;text-align:center;touch-action:none;user-select:none;z-index:2}
+.folder svg{width:84px;display:block;margin:0 auto 8px;filter:drop-shadow(4px 4px 0 #000)}
+.folder .nm{font-size:11px;word-break:break-word}
+.folder small{display:block;margin-top:2px}
+.folder.on .nm{background:#fff;color:#000;outline:2px solid #000}
+#stage{position:fixed;inset:0;pointer-events:none;z-index:10}
+.card{position:absolute;border:0;padding:0;background:#fff;box-shadow:5px 5px 0 #000;line-height:0;pointer-events:auto;touch-action:none;animation:pop .35s both}
+.card img{width:100%;display:block;pointer-events:none}
+@keyframes pop{from{opacity:0;scale:.6}}
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 20px;display:flex;gap:10px;align-items:center}
+#bar button{border:2px solid #000;background:#fff;padding:0 .7em}
+.hint{position:fixed;right:20px;bottom:16px;z-index:3;margin:0}
+body.open .hint{display:none}
+#lb{position:fixed;inset:0;z-index:99;background:#fffe;display:grid;place-items:center;outline:0}
+#lb[hidden],#stage[hidden],#bar[hidden]{display:none}
+#lb img{max-width:92vw;max-height:90vh;box-shadow:8px 8px 0 #000}
+@media (max-width:700px){
+ body{overflow:auto}
+ #desk{position:static;display:flex;flex-wrap:wrap;gap:28px 8px;padding:190px 12px 90px}
+ .folder{position:static}
+ #stage{pointer-events:auto;overflow:auto;background:#fff;display:flex;flex-wrap:wrap;gap:12px;padding:56px 12px 12px;align-content:flex-start}
+ .card{position:static;width:calc(50% - 6px);align-self:flex-start}
+ #bar{top:0;bottom:auto;background:#fff}
+}
+@media (prefers-reduced-motion:reduce){.card{animation:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1 class="tag">Parkhyeonwoo</h1>
+  <p><span class="tag">Digital Graphic | Contents Design</span></p>
+  <p>@offthatcom</p>
+</header>
+<canvas id="trail" aria-hidden="true"></canvas>
+<main id="desk"></main>
+<p class="hint">폴더를 눌러 열고, 끌어서 옮겨보세요</p>
+<div id="stage" hidden></div>
+<div id="bar" hidden><span class="tag" id="bt"></span><button id="x" type="button">닫기</button></div>
+<div id="lb" hidden tabindex="-1"><img alt=""></div>
+<script src="data.js"></script>
+<script>
+const NAMES={lmc:'LMC / GIRLSKATEBOARDS',moranique:'MORANIQUE',dnmd:'DNMD',wkndrs:'WKNDRS'};
+const POS={lmc:[12,40],moranique:[36,58],dnmd:[58,38],wkndrs:[76,60]};
+const $=s=>document.querySelector(s);
+const desk=$('#desk'),stage=$('#stage'),bar=$('#bar'),lb=$('#lb');
+let z=10;
+const mobile=()=>matchMedia('(max-width:700px)').matches;
+
+function drag(el,onClick){
+  let sx,sy,ox,oy,moved=false;
+  el.addEventListener('pointerdown',e=>{
+    sx=e.clientX;sy=e.clientY;ox=el.offsetLeft;oy=el.offsetTop;moved=false;
+    el.setPointerCapture(e.pointerId);el.style.zIndex=++z;
+  });
+  el.addEventListener('pointermove',e=>{
+    if(!el.hasPointerCapture(e.pointerId))return;
+    const dx=e.clientX-sx,dy=e.clientY-sy;
+    if(Math.abs(dx)+Math.abs(dy)>5)moved=true;
+    if(moved&&!mobile()){el.style.left=ox+dx+'px';el.style.top=oy+dy+'px'}
+  });
+  el.addEventListener('pointerup',()=>{if(!moved)onClick()});
+  el.addEventListener('click',e=>{if(e.detail===0)onClick()});
+}
+
+function closeStage(){stage.innerHTML='';stage.hidden=true;bar.hidden=true;document.body.classList.remove('open');
+  document.querySelectorAll('.folder').forEach(f=>f.classList.remove('on'))}
+
+function openFolder(k){
+  closeStage();
+  const list=WORKS[k];
+  stage.hidden=bar.hidden=false;document.body.classList.add('open');
+  $('#bt').textContent=NAMES[k]+' · '+list.length+'개';
+  document.querySelector('.folder[data-k='+k+']').classList.add('on');
+  list.forEach(([src,w,h],i)=>{
+    const c=document.createElement('button');
+    c.className='card';c.type='button';c.setAttribute('aria-label',NAMES[k]+' 작업물 '+(i+1));
+    const img=new Image();img.src=src;img.alt='';img.draggable=false;img.loading='lazy';c.append(img);
+    if(!mobile()){
+      const cw=Math.min(300,Math.max(170,innerWidth*.17)),ch=cw*h/w;
+      c.style.width=cw+'px';
+      c.style.left=Math.random()*Math.max(0,innerWidth-cw)+'px';
+      c.style.top=70+Math.random()*Math.max(0,innerHeight-ch-140)+'px';
+      c.style.transform='rotate('+(Math.random()*8-4).toFixed(1)+'deg)';
+    }
+    c.style.animationDelay=Math.min(i*25,700)+'ms';
+    stage.append(c);
+    drag(c,()=>{lb.querySelector('img').src=src;lb.hidden=false;lb.focus()});
+  });
+}
+
+Object.keys(WORKS).forEach(k=>{
+  const f=document.createElement('button');
+  f.className='folder';f.type='button';f.dataset.k=k;
+  f.style.left=POS[k][0]+'%';f.style.top=POS[k][1]+'%';
+  f.innerHTML='<svg viewBox="0 0 16 13" shape-rendering="crispEdges" aria-hidden="true"><path d="M.5 2.5h5.5l1 1h8.5v9H.5z" fill="#fff" stroke="#000" stroke-width=".8"/><path d="M2 5.5h12" stroke="#000" stroke-width=".5"/></svg>'
+    +'<span class="nm tag">'+NAMES[k]+'</span><small>'+WORKS[k].length+'개</small>';
+  desk.append(f);
+  drag(f,()=>openFolder(k));
+});
+
+$('#x').onclick=closeStage;
+lb.onclick=()=>{lb.hidden=true};
+addEventListener('keydown',e=>{if(e.key==='Escape'){lb.hidden?closeStage():lb.hidden=true}});
+
+/* 저해상도 커서 트레일: 1/10 크기 캔버스를 키워서 픽셀이 보이게 */
+const cv=$('#trail'),cx=cv.getContext('2d');
+const S=10;
+function fit(){cv.width=Math.ceil(innerWidth/S);cv.height=Math.ceil(innerHeight/S)}
+fit();addEventListener('resize',fit);
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  addEventListener('pointermove',e=>{
+    if(e.pointerType==='touch')return;
+    cx.globalCompositeOperation='source-over';cx.fillStyle='#000';
+    cx.fillRect(Math.floor(e.clientX/S),Math.floor(e.clientY/S),1,1);
+  });
+  (function fade(){
+    cx.globalCompositeOperation='destination-out';cx.fillStyle='rgba(0,0,0,.07)';
+    cx.fillRect(0,0,cv.width,cv.height);requestAnimationFrame(fade);
+  })();
+}
+</script>
+</body>
+</html>
