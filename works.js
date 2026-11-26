@@ -372,14 +372,23 @@ const WORKS = {
  ],
  "space": [
   {
-   "year": "2026",
-   "company": "회사명",
-   "title": "작업제목 01",
-   "desc": "여기에 작업 설명이 들어갑니다. 무엇을 만들었고 어떤 역할을 했는지 짧게 적어주세요.",
-   "img": "assets/work/space/2026_company_title01/01.jpg",
+   "year": "2023",
+   "company": "lmc",
+   "title": "puma pop up",
+   "desc": "x puma 팝업\n오프라인 디자인물 제작 (시트지, 지류)",
+   "img": "assets/work/space/2023_lmc_puma_pop_up/01.jpg",
    "slides": [
     {
-     "img": "assets/work/space/2026_company_title01/01.jpg"
+     "img": "assets/work/space/2023_lmc_puma_pop_up/01.jpg"
+    },
+    {
+     "img": "assets/work/space/2023_lmc_puma_pop_up/02.jpg"
+    },
+    {
+     "img": "assets/work/space/2023_lmc_puma_pop_up/03.jpg"
+    },
+    {
+     "img": "assets/work/space/2023_lmc_puma_pop_up/04.jpg"
     }
    ]
   }
