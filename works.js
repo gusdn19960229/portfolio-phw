@@ -63,6 +63,33 @@ const WORKS = {
   {
    "year": "2024",
    "company": "lmc",
+   "title": "g-shock",
+   "desc": "",
+   "img": "assets/work/graphic/2024_lmc_g-shock/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2024_lmc_g-shock/01.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2024_lmc_g-shock/02.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2024_lmc_g-shock/03.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2024_lmc_g-shock/04.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2024_lmc_g-shock/05.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2024_lmc_g-shock/06.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2024",
+   "company": "lmc",
    "title": "event package",
    "desc": "",
    "img": "assets/work/graphic/2024_lmc_event_package/01.jpg",
