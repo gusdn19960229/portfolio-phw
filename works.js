@@ -31,12 +31,54 @@ const WORKS = {
   {
    "year": "2024",
    "company": "lmc",
+   "title": "new year collage",
+   "desc": "",
+   "video": "assets/work/graphic/2024_lmc_new_year_collage/01.mp4",
+   "silent": true,
+   "slides": [
+    {
+     "video": "assets/work/graphic/2024_lmc_new_year_collage/01.mp4",
+     "silent": true
+    },
+    {
+     "img": "assets/work/graphic/2024_lmc_new_year_collage/02.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2024_lmc_new_year_collage/03.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2024",
+   "company": "lmc",
    "title": "mid sale",
    "desc": "",
    "img": "assets/work/graphic/2024_lmc_mid_sale/01.jpg",
    "slides": [
     {
      "img": "assets/work/graphic/2024_lmc_mid_sale/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2024",
+   "company": "lmc",
+   "title": "event package",
+   "desc": "",
+   "img": "assets/work/graphic/2024_lmc_event_package/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2024_lmc_event_package/01.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2024_lmc_event_package/02.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2024_lmc_event_package/03.jpg"
+    },
+    {
+     "video": "assets/work/graphic/2024_lmc_event_package/04.mp4",
+     "silent": true
     }
    ]
   },

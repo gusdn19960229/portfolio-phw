@@ -188,7 +188,14 @@ function show(){
       b.setAttribute("aria-controls",p.id); b.setAttribute("aria-expanded","false");
       b.onclick=()=>{ p.hidden=!p.hidden; b.setAttribute("aria-expanded",String(!p.hidden)); };
       fig.append(media);
-      if(w.video){
+      /* 여러 컷 중 첫 컷이 영상인 작업: 누르면 크게 보기 */
+      const more=w.video&&w.slides;
+      if(more){
+        media.tabIndex=0; media.setAttribute("role","button");
+        media.onclick=()=>openViewer(w.slides,w.title,media);
+        media.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); media.onclick(); } };
+      }
+      if(w.video&&!w.silent){
         /* 소리: 글자는 지금 상태를 보여줌. 영상이나 글자를 누르면 켜기/끄기, 한 번에 하나만 */
         const s=el("button","cap c","♪ sound off"); s.type="button"; s.setAttribute("aria-pressed","false");
         const toggle=()=>{
@@ -198,7 +205,7 @@ function show(){
           media.muted=!on;
           if(on){ s.textContent="♪ sound on"; s.setAttribute("aria-pressed","true"); media.currentTime=0; media.play().catch(()=>{}); }
         };
-        s.classList.add("snd"); s.onclick=media.onclick=toggle; fig.append(s);
+        s.classList.add("snd"); s.onclick=toggle; if(!more)media.onclick=toggle; fig.append(s);
       }
       fig.append(b,p); grid.append(fig);
     });

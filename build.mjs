@@ -9,6 +9,8 @@ const nfc = s => s.normalize("NFC");               // 맥 한글 파일명 대�
 const stemOf = n => nfc(n.slice(0, n.length - extname(n).length));
 const isMedia = n => IMG.includes(extname(n).toLowerCase()) || VID.includes(extname(n).toLowerCase());
 const kind = n => (VID.includes(extname(n).toLowerCase()) ? "video" : "img");
+/* 소리 트랙이 없는 mp4 는 silent 로 표시 (소리 버튼을 숨김) */
+const silent = path => /\.(mp4|mov)$/i.test(path) && !/hdlr[\s\S]{8}soun/.test(readFileSync(root + path, "latin1"));
 const url = path => path.split("/").map(encodeURIComponent).join("/");
 
 // 이름(연도_회사_제목)과 txt 에서 제목·설명 만들기
@@ -38,15 +40,17 @@ for (const dir of readdirSync(root + "assets/work", { withFileTypes: true }).fil
         // 폴더 하나 = 작업 하나. 안의 파일은 이름 순서대로 넘겨봄 (첫 번째가 썸네일)
         const inner = readdirSync(root + base + name).filter(n => !n.startsWith("."))
           .sort((a, b) => nfc(a).localeCompare(nfc(b), "en", { numeric: true }));
-        const media = inner.filter(isMedia).map(n => ({ [kind(n)]: url(base + name + "/" + n) }));
+        const media = inner.filter(isMedia).map(n => ({ [kind(n)]: url(base + name + "/" + n), ...(silent(base + name + "/" + n) && { silent: true }) }));
         if (!media.length) return [];
         const txt = inner.find(n => extname(n).toLowerCase() === ".txt");
-        const cover = media.find(m => m.img);
-        return [{ ...info(nfc(name), txt && base + name + "/" + txt), ...(cover ? { img: cover.img, slides: media } : media[0]) }];
+        const meta = info(nfc(name), txt && base + name + "/" + txt);
+        // 첫 번째가 영상이면 영상이 썸네일
+        if (media[0].video) return [{ ...meta, ...media[0], ...(media.length > 1 && { slides: media }) }];
+        return [{ ...meta, img: media.find(m => m.img).img, slides: media }];
       }
       if (!isMedia(name)) return [];
       const stem = stemOf(name);
-      return [{ ...info(stem, texts.has(stem) && base + texts.get(stem)), [kind(name)]: url(base + name) }];
+      return [{ ...info(stem, texts.has(stem) && base + texts.get(stem)), [kind(name)]: url(base + name), ...(silent(base + name) && { silent: true }) }];
     });
 }
 writeFileSync(root + "works.js", "const WORKS = " + JSON.stringify(works, null, 1) + ";\n");
