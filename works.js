@@ -1,14 +1,26 @@
 const WORKS = {
  "apparel": [
   {
-   "year": "2026",
-   "company": "회사명",
-   "title": "작업제목 01",
-   "desc": "여기에 작업 설명이 들어갑니다. 무엇을 만들었고 어떤 역할을 했는지 짧게 적어주세요.",
-   "img": "assets/work/apparel/2026_company_title01/01.jpg",
+   "year": "2024",
+   "company": "lmc",
+   "title": "newera world tee",
+   "desc": "",
+   "img": "assets/work/apparel/2024_lmc_newera_world_tee/01.png",
    "slides": [
     {
-     "img": "assets/work/apparel/2026_company_title01/01.jpg"
+     "img": "assets/work/apparel/2024_lmc_newera_world_tee/01.png"
+    },
+    {
+     "img": "assets/work/apparel/2024_lmc_newera_world_tee/02.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2024_lmc_newera_world_tee/03.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2024_lmc_newera_world_tee/04.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2024_lmc_newera_world_tee/05.jpg"
     }
    ]
   }
