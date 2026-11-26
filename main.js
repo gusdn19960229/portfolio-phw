@@ -3,6 +3,7 @@
    trim = 이미지 아래 투명 여백(px), 폴더명 간격 맞춤용 */
 const FOLDERS = [
   { name:"graphic",  fish:"assets/fish/graphic.gif",  width:96,  faces:"right", trim:5 },
+  { name:"apparel",  fish:"assets/fish/apparel.gif",  width:120, faces:"right", trim:4 },
   { name:"campaign", fish:"assets/fish/campaign.gif", width:105, faces:"left" , trim:1 },
   { name:"video",    fish:"assets/fish/video.gif",    width:96,  faces:"left" , trim:0 },
   { name:"space",    fish:"assets/fish/space.gif",    width:120, faces:"left" , trim:16 },
