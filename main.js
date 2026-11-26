@@ -11,8 +11,16 @@ const FOLDERS = [
 
 const sea=document.getElementById("sea"), folder=document.getElementById("folder");
 const rnd=(a,b)=>a+Math.random()*(b-a);
-function color(){ const h=Math.floor(rnd(0,360)); const l=(h>40&&h<200)?rnd(25,32):rnd(40,50); return `hsl(${h} 100% ${l}%)`; }
-function paint(root){ root.querySelectorAll(".c").forEach(e=>e.style.color=color()); }
+/* 서로 확실히 구분되는 색 12개를 섞어서 하나씩 나눠줌: 12개까지는 겹치지 않음 */
+const COLORS=["#e6002d","#f26a00","#b58900","#6f8f00","#00962f","#008c8c","#0088d8","#1a2fe0","#7a1fe0","#c400c4","#ff2e93","#8a4510"];
+function paint(root){
+  let deck=[];
+  const hidden=e=>e.closest("[hidden]")?1:0;   /* 보이는 글자부터 색을 받음 */
+  [...root.querySelectorAll(".c")].sort((a,b)=>hidden(a)-hidden(b)).forEach(e=>{
+    if(!deck.length){ deck=[...COLORS]; for(let i=deck.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [deck[i],deck[j]]=[deck[j],deck[i]]; } }
+    e.style.color=deck.pop();
+  });
+}
 function el(tag,cls,text){ const e=document.createElement(tag); if(cls)e.className=cls; if(text!=null)e.textContent=text; return e; }
 
 const swimmers=FOLDERS.map((d,i)=>{
