@@ -21,3 +21,13 @@ figure img,figure video{display:block;width:100%;height:auto}
 a:focus-visible,button:focus-visible{outline:1px dotted currentColor;outline-offset:3px}
 .desc{white-space:pre-line}
 .food{position:absolute;left:0;top:0;width:10px;height:auto;pointer-events:none}
+.thumb{display:block;width:100%;padding:0;border:0;background:none}
+#viewer{position:fixed;inset:0;z-index:20;background:var(--bg);touch-action:pan-y pinch-zoom;user-select:none}
+#viewer .stage{position:absolute;inset:48px 48px 60px}
+#viewer .stage img,#viewer .stage video{width:100%;height:100%;object-fit:contain;-webkit-user-drag:none}
+#viewer button{position:absolute;padding:10px;border:0;background:none;font:italic bold 16px var(--en)}
+#viewer .close{top:8px;right:10px;text-decoration:underline}
+#viewer .prev,#viewer .next{top:50%;transform:translateY(-50%);font-size:22px}
+#viewer .prev{left:4px}
+#viewer .next{right:4px}
+#viewer .count{position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;font:italic bold 14px var(--en)}

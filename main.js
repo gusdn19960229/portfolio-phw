@@ -106,7 +106,45 @@ function tick(t){
   }
   requestAnimationFrame(tick);
 }
+/* 크게 보기: 화살표·방향키·밀기로 넘기고, 빈 곳이나 close, Esc 로 닫음 */
+let viewer=null;
+function openViewer(slides,title,from){
+  const box=el("div"); box.id="viewer"; box.setAttribute("role","dialog"); box.setAttribute("aria-modal","true"); box.setAttribute("aria-label",title);
+  const stage=el("div","stage");
+  const button=(cls,text,label,fn)=>{ const b=el("button",cls+" c",text); b.type="button"; b.setAttribute("aria-label",label); b.onclick=fn; return b; };
+  const count=el("p","count c");
+  let i=0;
+  const go=n=>{
+    i=(n+slides.length)%slides.length; const s=slides[i];
+    const m=el(s.video?"video":"img");
+    if(s.video){ m.controls=m.autoplay=m.loop=m.muted=m.playsInline=true; m.src=s.video; } else { m.src=s.img; m.alt=title; }
+    stage.replaceChildren(m); count.textContent=slides.length>1?`${i+1} / ${slides.length}`:"";
+  };
+  const close=button("close","close","close",closeViewer);
+  box.append(stage,count,close);
+  if(slides.length>1)box.append(button("prev","←","previous",()=>go(i-1)),button("next","→","next",()=>go(i+1)));
+  let startX=null;
+  box.onpointerdown=e=>startX=e.clientX;
+  box.onpointerup=e=>{
+    const dx=startX===null?0:e.clientX-startX; startX=null;
+    if(Math.abs(dx)>40&&slides.length>1)go(i+(dx<0?1:-1));
+    else if(e.target===box||e.target===stage)setTimeout(closeViewer);
+  };
+  viewer={box,from,key:e=>{
+    if(e.key==="Escape")closeViewer();
+    if(slides.length>1&&e.key==="ArrowLeft")go(i-1);
+    if(slides.length>1&&e.key==="ArrowRight")go(i+1);
+  }};
+  addEventListener("keydown",viewer.key);
+  document.body.style.overflow="hidden"; document.body.append(box); paint(box); go(0); close.focus({preventScroll:true});
+}
+function closeViewer(){
+  if(!viewer)return;
+  removeEventListener("keydown",viewer.key); viewer.box.remove(); document.body.style.overflow="";
+  viewer.from.focus({preventScroll:true}); viewer=null;
+}
 function show(){
+  closeViewer();
   const d=FOLDERS.find(f=>"#"+f.name===location.hash);
   foods.splice(0).forEach(f=>f.img.remove());
   sea.hidden=!!d; folder.hidden=!d; folder.replaceChildren();
@@ -115,7 +153,11 @@ function show(){
     d.works.forEach((w,i)=>{
       const fig=el("figure"); let media;
       if(w.video){ media=el("video"); media.muted=media.loop=media.autoplay=media.playsInline=true; media.src=w.video; media.setAttribute("aria-label",w.title); }
-      else { media=el("img"); media.src=w.img; media.alt=w.title; }
+      else {
+        const img=el("img"); img.src=w.img; img.alt=w.title;
+        media=el("button","thumb"); media.type="button"; media.append(img);
+        media.onclick=()=>openViewer(w.slides||[{img:w.img}],w.title,media);
+      }
       const b=el("button","cap c",[w.year,w.company,w.title].filter(Boolean).join(" / ")); b.type="button";
       const p=el("p","desc c",w.desc); p.hidden=true; p.id="d"+i;
       b.setAttribute("aria-controls",p.id); b.setAttribute("aria-expanded","false");
