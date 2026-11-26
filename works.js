@@ -43,6 +43,51 @@ const WORKS = {
   {
    "year": "2023",
    "company": "lmc",
+   "title": "sound control",
+   "desc": "",
+   "img": "assets/work/graphic/2023_lmc_sound_control/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2023_lmc_sound_control/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2023",
+   "company": "lmc",
+   "title": "season zine",
+   "desc": "",
+   "img": "assets/work/graphic/2023_lmc_season_zine/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2023_lmc_season_zine/01.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_season_zine/02.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_season_zine/03.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_season_zine/04.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_season_zine/05.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_season_zine/06.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_season_zine/07.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_season_zine/08.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2023",
+   "company": "lmc",
    "title": "musinsa live",
    "desc": "",
    "img": "assets/work/graphic/2023_lmc_musinsa_live/01.jpg",
