@@ -184,10 +184,16 @@ function show(){
         media=el("button","thumb"); media.type="button"; media.append(img);
         media.onclick=()=>openViewer(w.slides||[{img:w.img}],w.title,media);
       }
-      const b=el("button","cap c",[w.year,w.company,w.title].filter(Boolean).join(" / ")); b.type="button";
-      const p=el("p","desc",w.desc); p.hidden=true; p.id="d"+i;
-      b.setAttribute("aria-controls",p.id); b.setAttribute("aria-expanded","false");
-      b.onclick=()=>{ p.hidden=!p.hidden; b.setAttribute("aria-expanded",String(!p.hidden)); };
+      /* 설명이 있는 작업만 [+] 를 붙이고 눌러서 펼침. 없으면 그냥 제목 */
+      const title=[w.year,w.company,w.title].filter(Boolean).join(" / ");
+      const b=el(w.desc?"button":"p","cap c",title);
+      const p=w.desc?el("p","desc",w.desc):null;
+      if(p){
+        const mark=el("span","mark","[+]"); mark.setAttribute("aria-hidden","true");
+        b.type="button"; b.append(" ",mark); p.hidden=true; p.id="d"+i;
+        b.setAttribute("aria-controls",p.id); b.setAttribute("aria-expanded","false");
+        b.onclick=()=>{ p.hidden=!p.hidden; mark.textContent=p.hidden?"[+]":"[-]"; b.setAttribute("aria-expanded",String(!p.hidden)); };
+      }
       fig.append(media);
       /* 여러 컷 중 첫 컷이 영상인 작업: 누르면 크게 보기 */
       const more=w.video&&w.slides;
@@ -208,7 +214,7 @@ function show(){
         };
         s.classList.add("snd"); s.onclick=toggle; if(!more)media.onclick=toggle; fig.append(s);
       }
-      fig.append(b,p); grid.append(fig);
+      fig.append(b); if(p)fig.append(p); grid.append(fig);
     });
     folder.append(el("h1","c",d.name),grid); window.scrollTo(0,0);
     grid.querySelectorAll("video").forEach(v=>watcher.observe(v));

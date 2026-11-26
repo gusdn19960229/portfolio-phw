@@ -13,7 +13,7 @@ sup{font-size:11px;line-height:0}
 #year span{white-space:pre;color:#e6004c;animation:rainbow 4.8s linear infinite}
 @keyframes rainbow{0%,100%{color:#e6004c}16.66%{color:#ff7300}33.33%{color:#d9a400}50%{color:#00a53c}66.66%{color:#0070ff}83.33%{color:#9b1fe8}}
 @media (prefers-reduced-motion:reduce){#year span{animation:none}#year span:nth-child(6n+2){color:#ff7300}#year span:nth-child(6n+3){color:#d9a400}#year span:nth-child(6n+4){color:#00a53c}#year span:nth-child(6n+5){color:#0070ff}#year span:nth-child(6n){color:#9b1fe8}}
-#sea{position:fixed;inset:0 0 36px;overflow:hidden}
+#sea{position:fixed;inset:0 0 56px;overflow:hidden}
 .fish{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;will-change:transform}
 .fish img{height:auto;image-rendering:pixelated}
 .fish span{font:italic bold 14px var(--en);text-decoration:underline;white-space:nowrap}
@@ -24,6 +24,8 @@ figure{margin:0;min-width:0;text-align:center}
 figure img,figure video{display:block;width:100%;height:auto}
 figure video{aspect-ratio:auto 3/4}   /* 불러오기 전에도 자리를 잡아둠 */
 .cap{display:block;width:100%;margin-top:7px;padding:0;border:0;background:none;font:italic bold 14px/1.4 var(--en);text-decoration:underline;overflow-wrap:anywhere}
+p.cap{margin:7px 0 0;text-decoration:none}   /* 설명 없는 제목은 밑줄 없음 */
+.mark{display:inline-block}
 .desc{margin:7px 0 0;font-size:14px;overflow-wrap:anywhere;word-break:keep-all}
 a:focus-visible,button:focus-visible{outline:1px dotted currentColor;outline-offset:3px}
 .desc{white-space:pre-line;color:#1a1a1a}   /* 작업 설명은 K90 */
@@ -43,3 +45,5 @@ footer{padding:0 16px 14px;text-align:center}
 footer a,footer span{font:italic bold 14px var(--en)}
 footer a{text-decoration:underline;display:inline-block}
 .home footer{position:fixed;left:0;right:0;bottom:0;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+.feed{display:none;margin:3px 0 0;font:italic bold 12px var(--en)}   /* 먹이주기 힌트: 첫 화면에만 */
+.home .feed{display:block}
