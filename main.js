@@ -1,10 +1,11 @@
 /* 폴더 설정: name = assets/work 안의 하위폴더 이름
-   width = 물고기 크기(px), faces = 원본 물고기가 보는 방향 */
+   width = 물고기 크기(px), faces = 원본 물고기가 보는 방향
+   trim = 이미지 아래 투명 여백(px), 폴더명 간격 맞춤용 */
 const FOLDERS = [
-  { name:"video",      fish:"assets/fish/video.gif",      width:96,  faces:"left"  },
-  { name:"graphics",   fish:"assets/fish/graphics.gif",   width:96,  faces:"right" },
-  { name:"commercial", fish:"assets/fish/commercial.gif", width:105, faces:"left"  },
-  { name:"offline",    fish:"assets/fish/offline.gif",    width:120, faces:"left"  }
+  { name:"video",      fish:"assets/fish/video.gif",      width:96,  faces:"left" , trim:0 },
+  { name:"graphics",   fish:"assets/fish/graphics.gif",   width:96,  faces:"right", trim:5 },
+  { name:"commercial", fish:"assets/fish/commercial.gif", width:105, faces:"left" , trim:1 },
+  { name:"offline",    fish:"assets/fish/offline.gif",    width:120, faces:"left" , trim:16 }
 ].map(f => ({ ...f, works: WORKS[f.name] || [] }));
 
 const sea=document.getElementById("sea"), folder=document.getElementById("folder");
@@ -15,13 +16,13 @@ function el(tag,cls,text){ const e=document.createElement(tag); if(cls)e.classNa
 
 const swimmers=FOLDERS.map((d,i)=>{
   const a=el("a","fish"); a.href="#"+d.name;
-  const img=el("img"); img.src=d.fish; img.alt=""; img.width=d.width;
+  const img=el("img"); img.src=d.fish; img.alt=""; img.width=d.width; img.style.marginBottom=-d.trim+"px";
   a.append(img,el("span","c",d.name)); sea.append(a);
   const s={a,img,x:null,y:null,vx:rnd(22,48)*(Math.random()<.5?-1:1),vy:rnd(6,18)*(Math.random()<.5?-1:1),p:rnd(0,6),stop:false};
   a.onpointerenter=a.onfocus=()=>s.stop=true; a.onpointerleave=a.onblur=()=>s.stop=false;
   return s;
 });
-/* 물고기 먹이: 빈 곳을 누르면 떨어지고, 가장 가까운 먹이를 먹으러 감 */
+/* 물고기 먹이: 빈 곳을 누르면 떨어짐 */
 const foods=[];
 sea.addEventListener("click",e=>{
   if(e.target.closest(".fish"))return;
@@ -31,15 +32,46 @@ sea.addEventListener("click",e=>{
   if(foods.length>20)foods.shift().img.remove();
 });
 function moveFood(f){ f.img.style.transform=`translate(${f.x-5}px,${f.y-5}px)`; }
+/* 먹이 한 무더기에는 한 마리만: 가장 가까운 물고기가 맡음 */
+function assign(){
+  for(const s of swimmers)if(s.food&&!foods.includes(s.food)){ s.food=null; s.dir=0; }
+  for(;;){
+    const taken=swimmers.map(s=>s.food).filter(Boolean);
+    let pick=null,dist=Infinity;
+    for(const f of foods){
+      if(taken.some(t=>Math.hypot(t.x-f.x,t.y-f.y)<160))continue;
+      for(const s of swimmers){
+        if(s.food||s.x===null)continue;
+        const d=Math.hypot(f.x-s.x-s.a.offsetWidth/2,f.y-s.y-s.a.offsetHeight/2);
+        if(d<dist){dist=d;pick=[s,f];}
+      }
+    }
+    if(!pick)return;
+    pick[0].food=pick[1];
+  }
+}
 function chase(s,dt){
   const w=s.img.offsetWidth, cx=s.x+s.img.offsetLeft+w/2, cy=s.y+s.img.offsetTop+s.img.offsetHeight/2+Math.sin(s.p)*4;
-  let best=null,dist=Infinity;
-  for(const f of foods){ const d=Math.hypot(f.x-cx,f.y-cy); if(d<dist){dist=d;best=f;} }
+  const best=s.food;
   if(Math.abs(best.x-cx)>w/2)s.dir=Math.sign(best.x-cx); else if(!s.dir)s.dir=Math.sign(s.vx);
   const dx=best.x-(cx+s.dir*w*.42), dy=best.y-cy, d=Math.hypot(dx,dy);
-  if(d<9){ best.img.remove(); foods.splice(foods.indexOf(best),1); s.dir=0; return; }
+  if(d<9){ best.img.remove(); foods.splice(foods.indexOf(best),1); s.food=null; s.dir=0; return; }
   const step=Math.min(d,130*dt); s.x+=dx/d*step; s.y+=dy/d*step;
   s.vx=Math.abs(s.vx)*s.dir;
+}
+/* 뭉치면 서로 반대 방향으로 흩어짐 */
+function spread(dt){
+  for(let i=0;i<swimmers.length;i++)for(let j=i+1;j<swimmers.length;j++){
+    const a=swimmers[i], b=swimmers[j]; if(a.x===null||b.x===null)continue;
+    const dx=(b.x+b.a.offsetWidth/2)-(a.x+a.a.offsetWidth/2), dy=(b.y+b.a.offsetHeight/2)-(a.y+a.a.offsetHeight/2);
+    if(Math.abs(dx)>(a.a.offsetWidth+b.a.offsetWidth)/2+12||Math.abs(dy)>(a.a.offsetHeight+b.a.offsetHeight)/2+8)continue;
+    const sx=Math.sign(dx)||1, sy=Math.sign(dy)||1;
+    for(const [s,k] of [[a,-1],[b,1]]){
+      if(s.stop||s.food)continue;   /* 마우스를 올렸거나 먹이 먹으러 가는 중이면 그대로 */
+      s.vx=Math.abs(s.vx)*sx*k; s.vy=Math.abs(s.vy)*sy*k;
+      if(!still){ s.x+=sx*k*28*dt; s.y+=sy*k*18*dt; }
+    }
+  }
 }
 function place(){
   const W=sea.clientWidth,H=sea.clientHeight,n=swimmers.length;
@@ -55,9 +87,10 @@ function tick(t){
       const f=foods[i]; f.y+=16*dt; moveFood(f);
       if(f.y>H){ f.img.remove(); foods.splice(i,1); }
     }
+    assign(); spread(dt);
     for(const s of swimmers){
       if(s.x===null)continue;
-      const hungry=foods.length>0;
+      const hungry=!!s.food;
       if(hungry)chase(s,dt);
       else { s.dir=0; if(!s.stop&&!still){ s.x+=s.vx*dt; s.y+=s.vy*dt; s.p+=dt*2; } }
       const mx=Math.max(0,W-s.a.offsetWidth), my=Math.max(52,H-s.a.offsetHeight-8);
