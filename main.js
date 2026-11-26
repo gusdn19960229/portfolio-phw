@@ -2,10 +2,11 @@
    width = 물고기 크기(px), faces = 원본 물고기가 보는 방향
    trim = 이미지 아래 투명 여백(px), 폴더명 간격 맞춤용 */
 const FOLDERS = [
-  { name:"video",      fish:"assets/fish/video.gif",      width:96,  faces:"left" , trim:0 },
-  { name:"graphics",   fish:"assets/fish/graphics.gif",   width:96,  faces:"right", trim:5 },
-  { name:"commercial", fish:"assets/fish/commercial.gif", width:105, faces:"left" , trim:1 },
-  { name:"offline",    fish:"assets/fish/offline.gif",    width:120, faces:"left" , trim:16 }
+  { name:"graphic",  fish:"assets/fish/graphic.gif",  width:96,  faces:"right", trim:5 },
+  { name:"campaign", fish:"assets/fish/campaign.gif", width:105, faces:"left" , trim:1 },
+  { name:"video",    fish:"assets/fish/video.gif",    width:96,  faces:"left" , trim:0 },
+  { name:"space",    fish:"assets/fish/space.gif",    width:120, faces:"left" , trim:16 },
+  { name:"archive",  fish:"assets/fish/archive.gif",  width:120, faces:"right", trim:5 }
 ].map(f => ({ ...f, works: WORKS[f.name] || [] }));
 
 const sea=document.getElementById("sea"), folder=document.getElementById("folder");

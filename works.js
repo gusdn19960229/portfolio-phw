@@ -1,37 +1,51 @@
 const WORKS = {
- "commercial": [
+ "archive": [
   {
    "year": "2026",
    "company": "회사명",
    "title": "작업제목 01",
    "desc": "여기에 작업 설명이 들어갑니다. 무엇을 만들었고 어떤 역할을 했는지 짧게 적어주세요.",
-   "img": "assets/work/commercial/2026_company_title01/01.jpg",
+   "img": "assets/work/archive/2026_company_title01/01.jpg",
    "slides": [
     {
-     "img": "assets/work/commercial/2026_company_title01/01.jpg"
+     "img": "assets/work/archive/2026_company_title01/01.jpg"
     }
    ]
   }
  ],
- "graphics": [
+ "campaign": [
+  {
+   "year": "2026",
+   "company": "회사명",
+   "title": "작업제목 01",
+   "desc": "여기에 작업 설명이 들어갑니다. 무엇을 만들었고 어떤 역할을 했는지 짧게 적어주세요.",
+   "img": "assets/work/campaign/2026_company_title01/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/campaign/2026_company_title01/01.jpg"
+    }
+   ]
+  }
+ ],
+ "graphic": [
   {
    "year": "2026",
    "company": "회사명",
    "title": "작업제목 05",
    "desc": "안녕하세요 북괴현우입니다",
-   "img": "assets/work/graphics/2026_company_title05/01.jpg",
+   "img": "assets/work/graphic/2026_company_title05/01.jpg",
    "slides": [
     {
-     "img": "assets/work/graphics/2026_company_title05/01.jpg"
+     "img": "assets/work/graphic/2026_company_title05/01.jpg"
     },
     {
-     "img": "assets/work/graphics/2026_company_title05/02.jpg"
+     "img": "assets/work/graphic/2026_company_title05/02.jpg"
     },
     {
-     "img": "assets/work/graphics/2026_company_title05/03.jpg"
+     "img": "assets/work/graphic/2026_company_title05/03.jpg"
     },
     {
-     "img": "assets/work/graphics/2026_company_title05/04.jpg"
+     "img": "assets/work/graphic/2026_company_title05/04.jpg"
     }
    ]
   },
@@ -40,27 +54,27 @@ const WORKS = {
    "company": "회사명",
    "title": "작업제목 02",
    "desc": "안녕하세요 북괴현우입니다",
-   "img": "assets/work/graphics/2026_company_title02/01.jpg",
+   "img": "assets/work/graphic/2026_company_title02/01.jpg",
    "slides": [
     {
-     "img": "assets/work/graphics/2026_company_title02/01.jpg"
+     "img": "assets/work/graphic/2026_company_title02/01.jpg"
     },
     {
-     "img": "assets/work/graphics/2026_company_title02/02.jpg"
+     "img": "assets/work/graphic/2026_company_title02/02.jpg"
     }
    ]
   }
  ],
- "offline": [
+ "space": [
   {
    "year": "2026",
    "company": "회사명",
    "title": "작업제목 01",
    "desc": "여기에 작업 설명이 들어갑니다. 무엇을 만들었고 어떤 역할을 했는지 짧게 적어주세요.",
-   "img": "assets/work/offline/2026_company_title01/01.jpg",
+   "img": "assets/work/space/2026_company_title01/01.jpg",
    "slides": [
     {
-     "img": "assets/work/offline/2026_company_title01/01.jpg"
+     "img": "assets/work/space/2026_company_title01/01.jpg"
     }
    ]
   }
