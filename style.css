@@ -7,6 +7,12 @@ body{background:var(--bg);color:var(--fg);font:14px/1.45 var(--en);-webkit-font-
 header{position:relative;z-index:5;text-align:center;padding:14px 16px 0}
 header a{font:italic bold 17px var(--en);text-decoration:none}
 sup{font-size:11px;line-height:0}
+#six{padding:8px 7px;margin:-8px -7px -8px -6px;border:0;background:none;font:italic bold 12px var(--en);text-decoration:underline}
+#year{position:absolute;left:0;right:0;top:100%;margin:2px 0 0;font:italic bold 14px/1.4 var(--en)}
+/* 옛날 웹 무지개 글자: 색이 부드럽게 흘러감 */
+#year span{white-space:pre;color:#e6004c;animation:rainbow 4.8s linear infinite}
+@keyframes rainbow{0%,100%{color:#e6004c}16.66%{color:#ff7300}33.33%{color:#d9a400}50%{color:#00a53c}66.66%{color:#0070ff}83.33%{color:#9b1fe8}}
+@media (prefers-reduced-motion:reduce){#year span{animation:none}#year span:nth-child(6n+2){color:#ff7300}#year span:nth-child(6n+3){color:#d9a400}#year span:nth-child(6n+4){color:#00a53c}#year span:nth-child(6n+5){color:#0070ff}#year span:nth-child(6n){color:#9b1fe8}}
 #sea{position:fixed;inset:0 0 36px;overflow:hidden}
 .fish{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;will-change:transform}
 .fish img{height:auto;image-rendering:pixelated}

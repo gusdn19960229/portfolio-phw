@@ -144,8 +144,16 @@ function closeViewer(){
   removeEventListener("keydown",viewer.key); viewer.box.remove(); document.body.style.overflow="";
   viewer.from.focus({preventScroll:true}); viewer=null;
 }
+/* 이름 옆 6 을 누르면 연차 설명 */
+const six=document.getElementById("six"), year=document.getElementById("year");
+const letter=(t,i)=>{ const e=document.createElement("span"); e.textContent=t; e.style.animationDelay=-i*.2+"s"; e.setAttribute("aria-hidden","true"); return e; };
+const phrase=year.textContent;
+year.setAttribute("aria-label",phrase); year.setAttribute("role","note");
+year.replaceChildren(...[...phrase].map((t,i)=>letter(t,phrase.length-i)));
+six.onclick=()=>{ year.hidden=!year.hidden; six.setAttribute("aria-expanded",String(!year.hidden)); };
 function show(){
   closeViewer();
+  year.hidden=true; six.setAttribute("aria-expanded","false");
   const d=FOLDERS.find(f=>"#"+f.name===location.hash);
   foods.splice(0).forEach(f=>f.img.remove());
   document.body.classList.toggle("home",!d);
