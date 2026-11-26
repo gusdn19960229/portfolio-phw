@@ -124,6 +124,33 @@ const WORKS = {
   {
    "year": "2023",
    "company": "lmc",
+   "title": "editorial",
+   "desc": "",
+   "img": "assets/work/graphic/2023_lmc_editorial/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2023_lmc_editorial/01.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_editorial/02.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_editorial/03.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_editorial/04.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_editorial/05.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_lmc_editorial/06.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2023",
+   "company": "lmc",
    "title": "chuseok sale",
    "desc": "",
    "img": "assets/work/graphic/2023_lmc_chuseok_sale/01.jpg",
