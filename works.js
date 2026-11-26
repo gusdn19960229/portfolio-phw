@@ -29,38 +29,110 @@ const WORKS = {
  ],
  "graphic": [
   {
-   "year": "2026",
-   "company": "회사명",
-   "title": "작업제목 05",
-   "desc": "안녕하세요 북괴현우입니다",
-   "img": "assets/work/graphic/2026_company_title05/01.jpg",
+   "year": "2024",
+   "company": "lmc",
+   "title": "mid sale",
+   "desc": "",
+   "img": "assets/work/graphic/2024_lmc_mid_sale/01.jpg",
    "slides": [
     {
-     "img": "assets/work/graphic/2026_company_title05/01.jpg"
-    },
-    {
-     "img": "assets/work/graphic/2026_company_title05/02.jpg"
-    },
-    {
-     "img": "assets/work/graphic/2026_company_title05/03.jpg"
-    },
-    {
-     "img": "assets/work/graphic/2026_company_title05/04.jpg"
+     "img": "assets/work/graphic/2024_lmc_mid_sale/01.jpg"
     }
    ]
   },
   {
-   "year": "2026",
-   "company": "회사명",
-   "title": "작업제목 02",
-   "desc": "안녕하세요 북괴현우입니다",
-   "img": "assets/work/graphic/2026_company_title02/01.jpg",
+   "year": "2023",
+   "company": "lmc",
+   "title": "musinsa live",
+   "desc": "",
+   "img": "assets/work/graphic/2023_lmc_musinsa_live/01.jpg",
    "slides": [
     {
-     "img": "assets/work/graphic/2026_company_title02/01.jpg"
-    },
+     "img": "assets/work/graphic/2023_lmc_musinsa_live/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2023",
+   "company": "lmc",
+   "title": "mid sale",
+   "desc": "",
+   "img": "assets/work/graphic/2023_lmc_mid_sale/01.jpg",
+   "slides": [
     {
-     "img": "assets/work/graphic/2026_company_title02/02.jpg"
+     "img": "assets/work/graphic/2023_lmc_mid_sale/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2023",
+   "company": "lmc",
+   "title": "family sale",
+   "desc": "",
+   "img": "assets/work/graphic/2023_lmc_family_sale/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2023_lmc_family_sale/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2023",
+   "company": "lmc",
+   "title": "chuseok sale",
+   "desc": "",
+   "img": "assets/work/graphic/2023_lmc_chuseok_sale/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2023_lmc_chuseok_sale/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2023",
+   "company": "lmc",
+   "title": "black friday",
+   "desc": "",
+   "img": "assets/work/graphic/2023_lmc_black_friday/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2023_lmc_black_friday/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2022",
+   "company": "lmc",
+   "title": "season off",
+   "desc": "",
+   "img": "assets/work/graphic/2022_lmc_season_off/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2022_lmc_season_off/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2022",
+   "company": "lmc",
+   "title": "mid sale",
+   "desc": "",
+   "img": "assets/work/graphic/2022_lmc_mid_sale/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2022_lmc_mid_sale/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2022",
+   "company": "lmc",
+   "title": "family sale",
+   "desc": "",
+   "img": "assets/work/graphic/2022_lmc_family_sale/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2022_lmc_family_sale/01.jpg"
     }
    ]
   }
