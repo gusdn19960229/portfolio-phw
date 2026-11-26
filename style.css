@@ -25,7 +25,8 @@ figure img,figure video{display:block;width:100%;height:auto}
 .cap{display:block;width:100%;margin-top:7px;padding:0;border:0;background:none;font:italic bold 14px/1.4 var(--en);text-decoration:underline;overflow-wrap:anywhere}
 .desc{margin:7px 0 0;font-size:14px;overflow-wrap:anywhere;word-break:keep-all}
 a:focus-visible,button:focus-visible{outline:1px dotted currentColor;outline-offset:3px}
-.desc{white-space:pre-line}
+.desc{white-space:pre-line;color:#1a1a1a}   /* 작업 설명은 K90 */
+.snd[aria-pressed="false"]{color:#999!important}   /* 소리 꺼짐 = 회색 */
 .food{position:absolute;left:0;top:0;width:10px;height:auto;pointer-events:none}
 .thumb{display:block;width:100%;padding:0;border:0;background:none}
 #viewer{position:fixed;inset:0;z-index:20;background:var(--bg);touch-action:pan-y pinch-zoom;user-select:none}

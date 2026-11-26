@@ -177,19 +177,19 @@ function show(){
         media.onclick=()=>openViewer(w.slides||[{img:w.img}],w.title,media);
       }
       const b=el("button","cap c",[w.year,w.company,w.title].filter(Boolean).join(" / ")); b.type="button";
-      const p=el("p","desc c",w.desc); p.hidden=true; p.id="d"+i;
+      const p=el("p","desc",w.desc); p.hidden=true; p.id="d"+i;
       b.setAttribute("aria-controls",p.id); b.setAttribute("aria-expanded","false");
       b.onclick=()=>{ p.hidden=!p.hidden; b.setAttribute("aria-expanded",String(!p.hidden)); };
       fig.append(media);
       if(w.video){
-        /* 소리: 영상이나 글자를 누르면 켜기/끄기, 한 번에 하나만 */
-        const s=el("button","cap c","♪ sound on"); s.type="button";
+        /* 소리: 글자는 지금 상태를 보여줌. 영상이나 글자를 누르면 켜기/끄기, 한 번에 하나만 */
+        const s=el("button","cap c","♪ sound off"); s.type="button"; s.setAttribute("aria-pressed","false");
         const toggle=()=>{
           const on=media.muted;
           grid.querySelectorAll("video").forEach(v=>v.muted=true);
-          grid.querySelectorAll(".snd").forEach(x=>x.textContent="♪ sound on");
+          grid.querySelectorAll(".snd").forEach(x=>{ x.textContent="♪ sound off"; x.setAttribute("aria-pressed","false"); });
           media.muted=!on;
-          if(on){ s.textContent="♪ sound off"; media.currentTime=0; media.play().catch(()=>{}); }
+          if(on){ s.textContent="♪ sound on"; s.setAttribute("aria-pressed","true"); media.currentTime=0; media.play().catch(()=>{}); }
         };
         s.classList.add("snd"); s.onclick=media.onclick=toggle; fig.append(s);
       }
