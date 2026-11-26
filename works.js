@@ -42,13 +42,61 @@ const WORKS = {
  "campaign": [
   {
    "year": "2026",
-   "company": "회사명",
-   "title": "작업제목 01",
-   "desc": "여기에 작업 설명이 들어갑니다. 무엇을 만들었고 어떤 역할을 했는지 짧게 적어주세요.",
-   "img": "assets/work/campaign/2026_company_title01/01.jpg",
+   "company": "wkndrs",
+   "title": "x e.t",
+   "desc": "wkndrs x e.t lookbook\n기획, 가공",
+   "img": "assets/work/campaign/2026_wkndrs_x_et/01.jpg",
    "slides": [
     {
-     "img": "assets/work/campaign/2026_company_title01/01.jpg"
+     "img": "assets/work/campaign/2026_wkndrs_x_et/01.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2026_wkndrs_x_et/02.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2026_wkndrs_x_et/03.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2026_wkndrs_x_et/04.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2026_wkndrs_x_et/05.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2026_wkndrs_x_et/06.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2026_wkndrs_x_et/07.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2023",
+   "company": "lmc",
+   "title": "x puma",
+   "desc": "lmc x puma lookbook\n소품, 세트 디자인",
+   "img": "assets/work/campaign/2023_lmc_x_puma/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/campaign/2023_lmc_x_puma/01.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2023_lmc_x_puma/02.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2023_lmc_x_puma/03.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2023_lmc_x_puma/04.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2023_lmc_x_puma/05.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2023_lmc_x_puma/06.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2023_lmc_x_puma/07.jpg"
     }
    ]
   }
