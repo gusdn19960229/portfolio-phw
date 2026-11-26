@@ -51,6 +51,18 @@ const WORKS = {
   {
    "year": "2024",
    "company": "lmc",
+   "title": "musinsa live",
+   "desc": "",
+   "img": "assets/work/graphic/2024_lmc_musinsa_live/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2024_lmc_musinsa_live/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2024",
+   "company": "lmc",
    "title": "mid sale",
    "desc": "",
    "img": "assets/work/graphic/2024_lmc_mid_sale/01.jpg",
@@ -157,18 +169,6 @@ const WORKS = {
   {
    "year": "2023",
    "company": "lmc",
-   "title": "musinsa live",
-   "desc": "",
-   "img": "assets/work/graphic/2023_lmc_musinsa_live/01.jpg",
-   "slides": [
-    {
-     "img": "assets/work/graphic/2023_lmc_musinsa_live/01.jpg"
-    }
-   ]
-  },
-  {
-   "year": "2023",
-   "company": "lmc",
    "title": "mid sale",
    "desc": "",
    "img": "assets/work/graphic/2023_lmc_mid_sale/01.jpg",
@@ -220,18 +220,6 @@ const WORKS = {
   {
    "year": "2023",
    "company": "lmc",
-   "title": "chuseok sale",
-   "desc": "",
-   "img": "assets/work/graphic/2023_lmc_chuseok_sale/01.jpg",
-   "slides": [
-    {
-     "img": "assets/work/graphic/2023_lmc_chuseok_sale/01.jpg"
-    }
-   ]
-  },
-  {
-   "year": "2023",
-   "company": "lmc",
    "title": "black friday",
    "desc": "",
    "img": "assets/work/graphic/2023_lmc_black_friday/01.jpg",
@@ -274,6 +262,18 @@ const WORKS = {
    "slides": [
     {
      "img": "assets/work/graphic/2022_lmc_family_sale/01.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2022",
+   "company": "lmc",
+   "title": "chuseok sale",
+   "desc": "",
+   "img": "assets/work/graphic/2022_lmc_chuseok_sale/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2022_lmc_chuseok_sale/01.jpg"
     }
    ]
   }
