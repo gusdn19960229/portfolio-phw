@@ -69,29 +69,29 @@ const WORKS = {
   {
    "year": "2026",
    "company": "wkndrs",
-   "title": "tsss",
-   "desc": "edit, music",
+   "title": "release video",
+   "desc": "wkndrs x krackerhouse 콜라보발매 티징 영상\nshooting, edit, music",
    "video": "assets/work/video/2026_wkndrs_tsss.mp4"
   },
   {
    "year": "2026",
-   "company": "company",
-   "title": "title01",
-   "desc": "여기에 작업 설명이 들어갑니다. 무엇을 만들었고 어떤 역할을 했는지 짧게 적어주세요.",
-   "video": "assets/work/video/2026_company_title01.mp4"
+   "company": "wkndrs",
+   "title": "blackfriday",
+   "desc": "위캔더스 블랙프라이데이 마케팅비디오 *ai credit\nconcept, edit, music",
+   "video": "assets/work/video/2026_wkndrs_blackfriday.mp4"
   },
   {
    "year": "2024",
    "company": "lmc",
    "title": "metro lucky box",
-   "desc": "concept, shooting, edit, music",
+   "desc": "lmc 지하철 드롭 이벤트 마케팅비디오\nconcept, shooting, edit",
    "video": "assets/work/video/2024_LMC_METRO_LUCKY_BOX.mp4"
   },
   {
    "year": "2023",
-   "company": "lmc x puma",
-   "title": "vtg",
-   "desc": "concept, shooting, edit, music",
+   "company": "lmc",
+   "title": "puma custom",
+   "desc": "lmc x puma 콜라보상품 마케팅비디오\nconcept, edit",
    "video": "assets/work/video/2023_LMCxPUMA_VTG.mp4"
   }
  ]
