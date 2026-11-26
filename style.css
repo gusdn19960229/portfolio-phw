@@ -3,7 +3,7 @@
 :root{--bg:#fff;--fg:#000;--en:"OldKR","Times New Roman",Times,Dotum,"돋움",serif;color-scheme:light}
 html,body{height:100%}
 body{background:var(--bg);color:var(--fg);font:14px/1.45 var(--en);-webkit-font-smoothing:none;font-synthesis:none}
-*,*::before,*::after{box-sizing:border-box;cursor:url(assets/cursor.png) 1 11,pointer}
+*,*::before,*::after{box-sizing:border-box;cursor:url(assets/cursor.png) 0 5,pointer}
 header{position:relative;z-index:5;text-align:center;padding:14px 16px 0}
 header a{font:italic bold 17px var(--en);text-decoration:none}
 sup{font-size:11px;line-height:0}
@@ -20,3 +20,4 @@ figure img,figure video{display:block;width:100%;height:auto}
 .desc{margin:7px 0 0;font-size:14px;overflow-wrap:anywhere;word-break:keep-all}
 a:focus-visible,button:focus-visible{outline:1px dotted currentColor;outline-offset:3px}
 .desc{white-space:pre-line}
+.food{position:absolute;left:0;top:0;width:10px;height:auto;pointer-events:none}

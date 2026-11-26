@@ -21,6 +21,26 @@ const swimmers=FOLDERS.map((d,i)=>{
   a.onpointerenter=a.onfocus=()=>s.stop=true; a.onpointerleave=a.onblur=()=>s.stop=false;
   return s;
 });
+/* 물고기 먹이: 빈 곳을 누르면 떨어지고, 가장 가까운 먹이를 먹으러 감 */
+const foods=[];
+sea.addEventListener("click",e=>{
+  if(e.target.closest(".fish"))return;
+  const img=el("img","food"); img.src="assets/food.png"; img.alt="";
+  const r=sea.getBoundingClientRect(), f={img,x:e.clientX-r.left,y:e.clientY-r.top};
+  moveFood(f); sea.append(img); foods.push(f);
+  if(foods.length>20)foods.shift().img.remove();
+});
+function moveFood(f){ f.img.style.transform=`translate(${f.x-5}px,${f.y-5}px)`; }
+function chase(s,dt){
+  const w=s.img.offsetWidth, cx=s.x+s.img.offsetLeft+w/2, cy=s.y+s.img.offsetTop+s.img.offsetHeight/2+Math.sin(s.p)*4;
+  let best=null,dist=Infinity;
+  for(const f of foods){ const d=Math.hypot(f.x-cx,f.y-cy); if(d<dist){dist=d;best=f;} }
+  if(Math.abs(best.x-cx)>w/2)s.dir=Math.sign(best.x-cx); else if(!s.dir)s.dir=Math.sign(s.vx);
+  const dx=best.x-(cx+s.dir*w*.42), dy=best.y-cy, d=Math.hypot(dx,dy);
+  if(d<9){ best.img.remove(); foods.splice(foods.indexOf(best),1); s.dir=0; return; }
+  const step=Math.min(d,130*dt); s.x+=dx/d*step; s.y+=dy/d*step;
+  s.vx=Math.abs(s.vx)*s.dir;
+}
 function place(){
   const W=sea.clientWidth,H=sea.clientHeight,n=swimmers.length;
   swimmers.forEach((s,i)=>{ if(s.x===null&&W){ s.x=rnd(.05,.8)*(W-90); s.y=60+(i+rnd(.1,.6))*(H-140)/n; } });
@@ -31,12 +51,22 @@ function tick(t){
   const dt=Math.min((t-last)/1000,.05); last=t;
   if(!sea.hidden){
     place(); const W=sea.clientWidth,H=sea.clientHeight;
+    for(let i=foods.length-1;i>=0;i--){   /* 먹이는 천천히 가라앉음 */
+      const f=foods[i]; f.y+=16*dt; moveFood(f);
+      if(f.y>H){ f.img.remove(); foods.splice(i,1); }
+    }
     for(const s of swimmers){
       if(s.x===null)continue;
-      if(!s.stop&&!still){ s.x+=s.vx*dt; s.y+=s.vy*dt; s.p+=dt*2; }
+      const hungry=foods.length>0;
+      if(hungry)chase(s,dt);
+      else { s.dir=0; if(!s.stop&&!still){ s.x+=s.vx*dt; s.y+=s.vy*dt; s.p+=dt*2; } }
       const mx=Math.max(0,W-s.a.offsetWidth), my=Math.max(52,H-s.a.offsetHeight-8);
-      if(s.x<0){s.x=0;s.vx=Math.abs(s.vx)} if(s.x>mx){s.x=mx;s.vx=-Math.abs(s.vx)}
-      if(s.y<52){s.y=52;s.vy=Math.abs(s.vy)} if(s.y>my){s.y=my;s.vy=-Math.abs(s.vy)}
+      if(!hungry){   /* 가장자리에서 방향 전환 (먹이 쫓다 벗어나면 천천히 복귀) */
+        if(s.x<0)s.vx=Math.abs(s.vx); if(s.x>mx)s.vx=-Math.abs(s.vx);
+        if(s.y<52)s.vy=Math.abs(s.vy); if(s.y>my)s.vy=-Math.abs(s.vy);
+        s.x=Math.max(-s.a.offsetWidth,Math.min(s.x,W)); s.y=Math.max(-40,Math.min(s.y,H-40));
+        if(still){ s.x=Math.max(0,Math.min(s.x,mx)); s.y=Math.max(52,Math.min(s.y,my)); }
+      }
       s.img.style.transform=(s.vx<0)!==(FOLDERS[swimmers.indexOf(s)].faces==="left")?"scaleX(-1)":"";   /* 헤엄치는 방향을 보게 뒤집기 */
       s.a.style.transform=`translate(${s.x}px,${s.y+Math.sin(s.p)*4}px)`;
     }
@@ -45,6 +75,7 @@ function tick(t){
 }
 function show(){
   const d=FOLDERS.find(f=>"#"+f.name===location.hash);
+  foods.splice(0).forEach(f=>f.img.remove());
   sea.hidden=!!d; folder.hidden=!d; folder.replaceChildren();
   if(d){
     const grid=el("div","grid");
