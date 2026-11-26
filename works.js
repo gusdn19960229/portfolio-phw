@@ -90,9 +90,23 @@ const WORKS = {
   {
    "year": "2026",
    "company": "wkndrs",
+   "title": "collab teaser",
+   "desc": "wkndrs x champion 콜라보 티징 영상\nmusic",
+   "video": "assets/work/video/2026_wkndrs_collab_teaser.mp4"
+  },
+  {
+   "year": "2026",
+   "company": "wkndrs",
    "title": "blackfriday",
    "desc": "위캔더스 블랙프라이데이 마케팅비디오 *ai credit\nconcept, edit, music",
    "video": "assets/work/video/2026_wkndrs_blackfriday.mp4"
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "season teaser",
+   "desc": "wkndrs FW25 시즌발매 티징 영상\nedit",
+   "video": "assets/work/video/2025_wkndrs_season_teaser.mp4"
   },
   {
    "year": "2024",
