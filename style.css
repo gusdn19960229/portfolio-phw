@@ -1,5 +1,5 @@
 /* 흰 화면 · 작은 글씨 · 헤엄치는 폴더 */
-@font-face{font-family:"OldKR";src:url(assets/font/dotum90.woff) format("woff");unicode-range:U+1100-11FF,U+3130-318F,U+AC00-D7A3}
+@font-face{font-family:"OldKR";src:url(assets/font/dotum90.woff) format("woff");font-display:block;unicode-range:U+1100-11FF,U+3130-318F,U+AC00-D7A3}
 :root{--bg:#fff;--fg:#000;--en:"OldKR","Times New Roman",Times,Dotum,"돋움",serif;color-scheme:light}
 html,body{height:100%}
 body{background:var(--bg);color:var(--fg);font:14px/1.45 var(--en);-webkit-font-smoothing:none;font-synthesis:none}
