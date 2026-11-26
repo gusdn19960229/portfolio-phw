@@ -159,7 +159,14 @@ const phrase=year.textContent;
 year.setAttribute("aria-label",phrase); year.setAttribute("role","note");
 year.replaceChildren(...[...phrase].map((t,i)=>letter(t,phrase.length-i)));
 six.onclick=()=>{ year.hidden=!year.hidden; six.setAttribute("aria-expanded",String(!year.hidden)); };
+/* 영상은 화면에 보이는 것만 재생. 화면 밖으로 나가면 멈추고 소리도 끔 */
+const watcher=new IntersectionObserver(list=>list.forEach(({target:v,isIntersecting})=>{
+  if(isIntersecting){ v.play().catch(()=>{}); return; }
+  v.pause();
+  if(!v.muted){ v.muted=true; const s=v.parentElement.querySelector(".snd"); s.textContent="♪ sound off"; s.setAttribute("aria-pressed","false"); }
+}),{threshold:.25});
 function show(){
+  watcher.disconnect();
   closeViewer();
   year.hidden=true; six.setAttribute("aria-expanded","false");
   const d=FOLDERS.find(f=>"#"+f.name===location.hash);
@@ -170,7 +177,7 @@ function show(){
     const grid=el("div","grid");
     d.works.forEach((w,i)=>{
       const fig=el("figure"); let media;
-      if(w.video){ media=el("video"); media.muted=media.loop=media.autoplay=media.playsInline=true; media.src=w.video; media.setAttribute("aria-label",w.title); }
+      if(w.video){ media=el("video"); media.muted=media.loop=media.playsInline=true; media.preload="metadata"; media.src=w.video+"#t=0.001";   /* 첫 장면을 미리 보여줌 */ media.setAttribute("aria-label",w.title); }
       else {
         const img=el("img"); img.src=w.img; img.alt=w.title;
         media=el("button","thumb"); media.type="button"; media.append(img);
@@ -196,6 +203,7 @@ function show(){
       fig.append(b,p); grid.append(fig);
     });
     folder.append(el("h1","c",d.name),grid); window.scrollTo(0,0);
+    grid.querySelectorAll("video").forEach(v=>watcher.observe(v));
   }
   paint(document);
 }

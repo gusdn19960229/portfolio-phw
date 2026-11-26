@@ -22,6 +22,7 @@ h1{font:italic bold 16px var(--en);text-align:center;margin:0 0 22px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:30px 18px;align-items:start}
 figure{margin:0;min-width:0;text-align:center}
 figure img,figure video{display:block;width:100%;height:auto}
+figure video{aspect-ratio:auto 3/4}   /* 불러오기 전에도 자리를 잡아둠 */
 .cap{display:block;width:100%;margin-top:7px;padding:0;border:0;background:none;font:italic bold 14px/1.4 var(--en);text-decoration:underline;overflow-wrap:anywhere}
 .desc{margin:7px 0 0;font-size:14px;overflow-wrap:anywhere;word-break:keep-all}
 a:focus-visible,button:focus-visible{outline:1px dotted currentColor;outline-offset:3px}
