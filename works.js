@@ -70,7 +70,7 @@ const WORKS = {
    "year": "2026",
    "company": "wkndrs",
    "title": "tsss",
-   "desc": "Edit bgm",
+   "desc": "edit, music",
    "video": "assets/work/video/2026_wkndrs_tsss.mp4"
   },
   {
@@ -79,6 +79,20 @@ const WORKS = {
    "title": "title01",
    "desc": "여기에 작업 설명이 들어갑니다. 무엇을 만들었고 어떤 역할을 했는지 짧게 적어주세요.",
    "video": "assets/work/video/2026_company_title01.mp4"
+  },
+  {
+   "year": "2024",
+   "company": "lmc",
+   "title": "metro lucky box",
+   "desc": "concept, shooting, edit, music",
+   "video": "assets/work/video/2024_LMC_METRO_LUCKY_BOX.mp4"
+  },
+  {
+   "year": "2023",
+   "company": "lmc x puma",
+   "title": "vtg",
+   "desc": "concept, shooting, edit, music",
+   "video": "assets/work/video/2023_LMCxPUMA_VTG.mp4"
   }
  ]
 };
