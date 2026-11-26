@@ -56,7 +56,20 @@ function show(){
       const p=el("p","desc c",w.desc); p.hidden=true; p.id="d"+i;
       b.setAttribute("aria-controls",p.id); b.setAttribute("aria-expanded","false");
       b.onclick=()=>{ p.hidden=!p.hidden; b.setAttribute("aria-expanded",String(!p.hidden)); };
-      fig.append(media,b,p); grid.append(fig);
+      fig.append(media);
+      if(w.video){
+        /* 소리: 영상이나 글자를 누르면 켜기/끄기, 한 번에 하나만 */
+        const s=el("button","cap c","♪ sound on"); s.type="button";
+        const toggle=()=>{
+          const on=media.muted;
+          grid.querySelectorAll("video").forEach(v=>v.muted=true);
+          grid.querySelectorAll(".snd").forEach(x=>x.textContent="♪ sound on");
+          media.muted=!on;
+          if(on){ s.textContent="♪ sound off"; media.currentTime=0; media.play().catch(()=>{}); }
+        };
+        s.classList.add("snd"); s.onclick=media.onclick=toggle; fig.append(s);
+      }
+      fig.append(b,p); grid.append(fig);
     });
     folder.append(el("h1","c",d.name),grid); window.scrollTo(0,0);
   }
