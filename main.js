@@ -147,6 +147,7 @@ function show(){
   closeViewer();
   const d=FOLDERS.find(f=>"#"+f.name===location.hash);
   foods.splice(0).forEach(f=>f.img.remove());
+  document.body.classList.toggle("home",!d);
   sea.hidden=!!d; folder.hidden=!d; folder.replaceChildren();
   if(d){
     const grid=el("div","grid");

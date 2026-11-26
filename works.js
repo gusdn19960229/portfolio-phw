@@ -34,6 +34,21 @@ const WORKS = {
      "img": "assets/work/graphics/2026_company_title05/04.jpg"
     }
    ]
+  },
+  {
+   "year": "2026",
+   "company": "회사명",
+   "title": "작업제목 02",
+   "desc": "안녕하세요 북괴현우입니다",
+   "img": "assets/work/graphics/2026_company_title02/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphics/2026_company_title02/01.jpg"
+    },
+    {
+     "img": "assets/work/graphics/2026_company_title02/02.jpg"
+    }
+   ]
   }
  ],
  "offline": [
