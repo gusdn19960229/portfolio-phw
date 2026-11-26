@@ -6,7 +6,11 @@
 - index.html : 페이지 전체 (CSS/JS 포함)
 - data.js : 폴더별 작업물 목록 (이미지 경로, 가로, 세로)
 - assets/<폴더>/ : 작업물 이미지
-- fonts/ : Space Mono
+- assets/sea/ : 섬, 시계, 물고기 gif
+- fonts/ : Comic Sans / Times 대체 폰트 (해당 폰트가 없는 기기용)
+
+## 물고기 바꾸기
+index.html의 FOLDERS(폴더 물고기), AMBIENT(배경 물고기)에서 파일·크기·위치를 바꿔요.
 
 ## 배포 (GitHub + Vercel, 무료)
 1. GitHub에서 새 repository를 만들고 이 폴더 내용을 전부 올려요.
