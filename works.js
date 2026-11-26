@@ -137,6 +137,24 @@ const WORKS = {
   },
   {
    "year": "2023",
+   "company": "personal",
+   "title": "collage",
+   "desc": "",
+   "img": "assets/work/graphic/2023_personal_collage/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2023_personal_collage/01.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_personal_collage/02.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2023_personal_collage/03.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2023",
    "company": "lmc",
    "title": "sound control",
    "desc": "",
@@ -334,6 +352,13 @@ const WORKS = {
    "title": "season teaser",
    "desc": "wkndrs FW25 시즌발매 티징 영상\nedit",
    "video": "assets/work/video/2025_wkndrs_season_teaser.mp4"
+  },
+  {
+   "year": "2025",
+   "company": "personal",
+   "title": "ai study",
+   "desc": "",
+   "video": "assets/work/video/2025_personal_ai_study.mp4"
   },
   {
    "year": "2024",
