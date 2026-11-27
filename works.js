@@ -1250,7 +1250,7 @@ const WORKS = {
   {
    "year": "2026",
    "company": "wkndrs",
-   "title": "collab teaser",
+   "title": "teaser bgm",
    "desc": "wkndrs x champion 콜라보 티징 영상\nmusic",
    "video": "assets/work/video/2026_wkndrs_collab_teaser.mp4"
   },

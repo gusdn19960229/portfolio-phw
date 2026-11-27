@@ -192,6 +192,39 @@ function pile(items){
   });
   return floor;
 }
+/* archive 낙서: 빈 곳을 끌면 선이 그려지고, 한 번 끌 때마다 색이 바뀜. 폴더를 나가면 지워짐 */
+let doodle=null, ink="";
+const strokes=new Map();
+function sketch(){
+  doodle=el("canvas","doodle"); doodle.setAttribute("aria-hidden","true");
+  doodle.width=innerWidth; doodle.height=innerHeight;
+  return doodle;
+}
+/* 옛날 그림판처럼 각진 2px 점을 이어 찍음 */
+function line(a,b,color){
+  const g=doodle.getContext("2d"), n=Math.max(1,Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)));
+  g.fillStyle=color;
+  for(let i=0;i<=n;i++)g.fillRect(Math.round(a.x+(b.x-a.x)*i/n)-1,Math.round(a.y+(b.y-a.y)*i/n)-1,2,2);
+}
+addEventListener("pointerdown",e=>{
+  if(!doodle?.isConnected||e.button||e.target.closest("a,button,#viewer"))return;
+  e.preventDefault();
+  const rest=COLORS.filter(c=>c!==ink); ink=rest[Math.floor(Math.random()*rest.length)];
+  strokes.set(e.pointerId,{x:e.clientX,y:e.clientY,color:ink});
+});
+addEventListener("pointermove",e=>{
+  const s=strokes.get(e.pointerId);
+  if(!s||!doodle?.isConnected)return;
+  line(s,{x:e.clientX,y:e.clientY},s.color); s.x=e.clientX; s.y=e.clientY;
+});
+const lift=e=>strokes.delete(e.pointerId);
+addEventListener("pointerup",lift); addEventListener("pointercancel",lift);
+/* 창 크기가 바뀌어도 그린 건 남김 */
+addEventListener("resize",()=>{
+  if(!doodle?.isConnected)return;
+  const old=el("canvas"); old.width=doodle.width; old.height=doodle.height; old.getContext("2d").drawImage(doodle,0,0);
+  doodle.width=Math.max(innerWidth,old.width); doodle.height=Math.max(innerHeight,old.height); doodle.getContext("2d").drawImage(old,0,0);
+});
 /* 이름 옆 6 을 누르면 연차 설명 */
 const six=document.getElementById("six"), year=document.getElementById("year");
 six.onclick=()=>{ year.hidden=!year.hidden; six.setAttribute("aria-expanded",String(!year.hidden)); };
@@ -207,12 +240,13 @@ function show(){
   year.hidden=true; six.setAttribute("aria-expanded","false");
   const d=FOLDERS.find(f=>"#"+f.name===location.hash);
   foods.splice(0).forEach(f=>f.img.remove());
+  strokes.clear();
   document.body.classList.toggle("home",!d);
   sea.hidden=!!d; folder.hidden=!d; folder.replaceChildren();
   const heap=d&&d.name==="archive";
   document.body.classList.toggle("pile",!!heap);
   if(heap){
-    folder.append(el("h1","c",d.name),pile(d.works)); window.scrollTo(0,0);
+    folder.append(el("h1","c",d.name),pile(d.works),sketch()); window.scrollTo(0,0);
     folder.querySelectorAll("video").forEach(v=>watcher.observe(v));
   }
   else if(d){

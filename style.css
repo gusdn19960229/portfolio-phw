@@ -51,5 +51,8 @@ footer a{text-decoration:underline;display:inline-block}
 .photo{position:absolute;width:max-content;padding:0;border:0;background:none;line-height:0;touch-action:none;-webkit-touch-callout:none}
 .photo img,.photo video{display:block;width:auto;height:auto;pointer-events:none}
 .pile footer{position:fixed;left:0;right:0;bottom:0;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+/* 낙서는 글자·사진 뒤에 깔림 */
+.doodle{position:fixed;left:0;top:0;z-index:-1;image-rendering:pixelated}
+.pile header,.pile #folder,.pile footer{touch-action:none;user-select:none;-webkit-user-select:none}
 .feed{display:none;margin:3px 0 0;font:italic bold 12px var(--en);color:#e6002d}   /* 먹이주기 힌트: 첫 화면에만 */
 .home .feed{display:block}
