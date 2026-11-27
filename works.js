@@ -3,6 +3,63 @@ const WORKS = {
   {
    "year": "2025",
    "company": "wkndrs",
+   "title": "ss26 koinseoul",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_ss26_koinseoul/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_ss26_koinseoul/01.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_ss26_koinseoul/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_ss26_koinseoul/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26 koinseoul",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_m_ss26_koinseoul/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_m_ss26_koinseoul/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_m_ss26_koinseoul/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_m_ss26_koinseoul/03.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_m_ss26_koinseoul/04.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26 koinseoul",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_a_ss26_koinseoul/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_a_ss26_koinseoul/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_a_ss26_koinseoul/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_a_ss26_koinseoul/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
    "title": "ss26",
    "desc": "",
    "img": "assets/work/apparel/2025_wkndrs_y_ss26/01.webp",
@@ -36,6 +93,69 @@ const WORKS = {
     },
     {
      "img": "assets/work/apparel/2025_wkndrs_y_a_ss26/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_y_0_ss26/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_ss26/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_ss26/03.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_ss26/04.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_ss26/05.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_y_0_0_ss26/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_0_ss26/01.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_0_ss26/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_y_0_0_0_ss26/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_0_0_ss26/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_0_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_0_0_ss26/03.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_y_0_0_0_ss26/04.webp"
     }
    ]
   },
@@ -377,10 +497,10 @@ const WORKS = {
    "company": "lmc",
    "title": "newera world tee",
    "desc": "",
-   "img": "assets/work/apparel/2024_lmc_newera_world_tee/01.png",
+   "img": "assets/work/apparel/2024_lmc_newera_world_tee/01.jpg",
    "slides": [
     {
-     "img": "assets/work/apparel/2024_lmc_newera_world_tee/01.png"
+     "img": "assets/work/apparel/2024_lmc_newera_world_tee/01.jpg"
     },
     {
      "img": "assets/work/apparel/2024_lmc_newera_world_tee/02.jpg"
@@ -401,10 +521,10 @@ const WORKS = {
    "company": "lmc",
    "title": "hahaha",
    "desc": "",
-   "img": "assets/work/apparel/2023_lmc_hahaha/01.webp",
+   "img": "assets/work/apparel/2023_lmc_hahaha/01.jpg",
    "slides": [
     {
-     "img": "assets/work/apparel/2023_lmc_hahaha/01.webp"
+     "img": "assets/work/apparel/2023_lmc_hahaha/01.jpg"
     },
     {
      "img": "assets/work/apparel/2023_lmc_hahaha/02.webp"
