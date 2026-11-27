@@ -129,7 +129,10 @@ function openViewer(slides,title,from){
   const go=n=>{
     i=(n+slides.length)%slides.length; const s=slides[i];
     const m=el(s.video?"video":"img");
-    if(s.video){ m.controls=m.autoplay=m.loop=m.muted=m.playsInline=true; m.src=s.video; } else { m.src=s.img; m.alt=title; }
+    if(s.video){ m.controls=m.autoplay=m.loop=m.playsInline=true; m.muted=!s.sound; m.src=s.video;
+      m.onloadedmetadata=()=>m.style.setProperty("--r",m.videoWidth/m.videoHeight);
+      if(s.sound)m.play().catch(()=>{ m.muted=true; m.play().catch(()=>{}); });   /* 소리 재생이 막히면 음소거로 */
+    } else { m.src=s.img; m.alt=title; }
     stage.replaceChildren(m); count.textContent=slides.length>1?`${i+1} / ${slides.length}`:"";
   };
   const close=button("close","close","close",closeViewer);
@@ -270,15 +273,18 @@ function show(){
         b.onclick=()=>{ p.hidden=!p.hidden; sign.textContent=p.hidden?"+":"\u2212"; b.setAttribute("aria-expanded",String(!p.hidden)); };
       }
       fig.append(media);
-      /* 여러 컷 중 첫 컷이 영상인 작업: 누르면 크게 보기 */
-      const more=w.video&&w.slides;
-      if(more){
+      /* 영상: 누르면 크게 보기. 소리 있는 영상은 크게 볼 때 소리가 켜짐 */
+      if(w.video){
         media.tabIndex=0; media.setAttribute("role","button");
-        media.onclick=()=>openViewer(w.slides,w.title,media);
+        media.onclick=()=>{
+          grid.querySelectorAll("video").forEach(v=>v.muted=true);
+          grid.querySelectorAll(".snd").forEach(x=>{ x.textContent="♪ sound off"; x.setAttribute("aria-pressed","false"); });
+          openViewer((w.slides||[{video:w.video}]).map(s=>s.video?{...s,sound:!w.silent}:s),w.title,media);
+        };
         media.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); media.onclick(); } };
       }
       if(w.video&&!w.silent){
-        /* 소리: 글자는 지금 상태를 보여줌. 영상이나 글자를 누르면 켜기/끄기, 한 번에 하나만 */
+        /* 소리: 글자는 지금 상태를 보여줌. 글자를 누르면 켜기/끄기, 한 번에 하나만 */
         const s=el("button","cap c","♪ sound off"); s.type="button"; s.setAttribute("aria-pressed","false");
         const toggle=()=>{
           const on=media.muted;
@@ -287,7 +293,7 @@ function show(){
           media.muted=!on;
           if(on){ s.textContent="♪ sound on"; s.setAttribute("aria-pressed","true"); media.currentTime=0; media.play().catch(()=>{}); }
         };
-        s.classList.add("snd"); s.onclick=toggle; if(!more)media.onclick=toggle; fig.append(s);
+        s.classList.add("snd"); s.onclick=toggle; fig.append(s);
       }
       fig.append(b); if(p)fig.append(p); grid.append(fig);
     });
