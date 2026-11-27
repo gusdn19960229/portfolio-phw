@@ -198,10 +198,61 @@ function pile(items){
 /* archive 낙서: 빈 곳을 끌면 선이 그려지고, 한 번 끌 때마다 색이 바뀜. 폴더를 나가면 지워짐 */
 let doodle=null, ink="";
 const strokes=new Map();
+let hint=0, drew=false;   /* 한 번도 안 그렸으면 잠시 뒤 낙서 한 줄이 저절로 그려짐 */
 function sketch(){
   doodle=el("canvas","doodle"); doodle.setAttribute("aria-hidden","true");
   doodle.width=innerWidth; doodle.height=innerHeight;
+  drew=false; wait();
   return doodle;
+}
+function wait(){ clearTimeout(hint); hint=setTimeout(scribble,5500); }
+const nextInk=()=>{ const rest=COLORS.filter(c=>c!==ink); return ink=rest[Math.floor(Math.random()*rest.length)]; };
+/* 고양이 낙서 (120×80). 일부러 삐뚤빼뚤하게. 한 묶음이 한 획, 숫자는 x,y 순서 */
+const CAT=[
+  "37,63 25,57 18,46 20,31 28,19 33,14", "26,24 31,17 31,5 37,8 47,23",
+  "45,23 58,21 68,24 72,21 73,2 78,9 91,25", "86,20 96,27 104,42 102,55 88,66",
+  "47,35 44,38 44,41 47,40 49,36 46,35 45,40 47,37 46,39", "76,39 80,36 82,38 81,41 77,42 78,38 80,40 79,38",
+  "47,49 56,49 61,45 63,47", "58,46 57,53 63,57 67,52 62,50", "66,52 78,54 81,45",
+  "33,42 18,40 2,35", "34,47 20,52 8,65", "92,45 101,40 108,32 118,30", "94,51 105,56 111,66 119,69",
+  "39,63 28,65 25,73 29,78 49,79 50,70 40,65 33,66", "36,69 37,76", "43,68 42,75",
+  "57,79 57,71 66,65", "65,66 75,70 85,69 87,79 58,78", "65,74 64,79", "72,73 71,78",
+  "6,78 27,79", "30,79 61,80 88,79 103,82 116,80"
+].map(s=>rough(smooth(s.split(" ").map(p=>{ const [x,y]=p.split(",").map(Number); return {x,y}; }))));
+/* 마우스로 대충 그은 것처럼 선을 살짝 흔듦 */
+function rough(p){
+  const a=Math.random()*6, b=Math.random()*6;
+  return p.map((q,i)=>({x:q.x+Math.sin(i*.55+a)*.8, y:q.y+Math.sin(i*.8+b)*.8}));
+}
+/* 꺾인 점들을 손으로 그린 듯한 곡선으로 */
+function smooth(p){
+  const out=[p[0]];
+  for(let i=0;i<p.length-1;i++){
+    const a=p[i-1]||p[i], b=p[i], c=p[i+1], d=p[i+2]||c;
+    for(let k=1;k<=8;k++){
+      const t=k/8, f=v=>.5*(2*b[v]+(c[v]-a[v])*t+(2*a[v]-5*b[v]+4*c[v]-d[v])*t*t+(3*b[v]-a[v]-3*c[v]+d[v])*t*t*t);
+      out.push({x:f("x"),y:f("y")});
+    }
+  }
+  return out;
+}
+function scribble(){
+  if(drew||!doodle?.isConnected)return;
+  if(document.hidden||document.getElementById("viewer"))return wait();
+  const W=innerWidth, H=innerHeight, color=nextInk();
+  /* 구석 중에서 사진·글자에 안 가리는 자리를 고름 */
+  const busy=[...document.querySelectorAll(".photo,header,#folder h1,footer a,footer span")].map(e=>e.getBoundingClientRect());
+  const low=Math.min(...[...document.querySelectorAll("footer a,footer span")].map(e=>e.getBoundingClientRect().top),H)-92;
+  const spots=[[W-140,low],[20,low],[W-140,76],[20,76]].map(([x,y])=>({x,y}));
+  const o=spots.find(p=>!busy.some(r=>r.right>p.x&&r.left<p.x+120&&r.bottom>p.y&&r.top<p.y+80))||spots[0];
+  const path=CAT.flatMap(s=>s.slice(1).map((b,i)=>[s[i],b])), total=path.length;
+  const move=p=>({x:p.x+o.x,y:p.y+o.y});
+  const canvas=doodle; let start, done=0;
+  requestAnimationFrame(function step(now){
+    if(drew||canvas!==doodle||!canvas.isConnected)return;
+    start??=now; const n=Math.round(total*Math.min(1,(now-start)/2600));
+    for(;done<n;done++)line(move(path[done][0]),move(path[done][1]),color);
+    if(done<total)requestAnimationFrame(step);
+  });
 }
 /* 옛날 그림판처럼 각진 2px 점을 이어 찍음 */
 function line(a,b,color){
@@ -210,10 +261,11 @@ function line(a,b,color){
   for(let i=0;i<=n;i++)g.fillRect(Math.round(a.x+(b.x-a.x)*i/n)-1,Math.round(a.y+(b.y-a.y)*i/n)-1,2,2);
 }
 addEventListener("pointerdown",e=>{
-  if(!doodle?.isConnected||e.button||e.target.closest("a,button,#viewer"))return;
-  e.preventDefault();
-  const rest=COLORS.filter(c=>c!==ink); ink=rest[Math.floor(Math.random()*rest.length)];
-  strokes.set(e.pointerId,{x:e.clientX,y:e.clientY,color:ink});
+  if(!doodle?.isConnected||e.button)return;
+  if(e.target.closest(".photo"))wait();   /* 사진을 만지는 동안은 미룸 */
+  if(e.target.closest("a,button,#viewer"))return;
+  e.preventDefault(); drew=true;
+  strokes.set(e.pointerId,{x:e.clientX,y:e.clientY,color:nextInk()});
 });
 addEventListener("pointermove",e=>{
   const s=strokes.get(e.pointerId);
@@ -243,7 +295,7 @@ function show(){
   year.hidden=true; six.setAttribute("aria-expanded","false");
   const d=FOLDERS.find(f=>"#"+f.name===location.hash);
   foods.splice(0).forEach(f=>f.img.remove());
-  strokes.clear();
+  strokes.clear(); clearTimeout(hint);
   document.body.classList.toggle("home",!d);
   sea.hidden=!!d; folder.hidden=!d; folder.replaceChildren();
   const heap=d&&d.name==="archive";

@@ -889,6 +889,24 @@ const WORKS = {
   {
    "year": "2026",
    "company": "wkndrs",
+   "title": "gwaxng teaser",
+   "desc": "기획, 촬영, edit",
+   "img": "assets/work/campaign/2026_wkndrs_z_gwaxng_teaser/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/campaign/2026_wkndrs_z_gwaxng_teaser/01.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2026_wkndrs_z_gwaxng_teaser/02.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2026_wkndrs_z_gwaxng_teaser/03.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2026",
+   "company": "wkndrs",
    "title": "x e.t",
    "desc": "wkndrs x e.t lookbook\n기획, 가공",
    "img": "assets/work/campaign/2026_wkndrs_x_et/01.jpg",
@@ -913,6 +931,26 @@ const WORKS = {
     },
     {
      "img": "assets/work/campaign/2026_wkndrs_x_et/07.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "olga ad",
+   "desc": "*ai credit",
+   "video": "assets/work/campaign/2025_wkndrs_olga_ad/01.mp4",
+   "silent": true,
+   "slides": [
+    {
+     "video": "assets/work/campaign/2025_wkndrs_olga_ad/01.mp4",
+     "silent": true
+    },
+    {
+     "img": "assets/work/campaign/2025_wkndrs_olga_ad/02.jpg"
+    },
+    {
+     "img": "assets/work/campaign/2025_wkndrs_olga_ad/03.jpg"
     }
    ]
   },
@@ -948,6 +986,29 @@ const WORKS = {
   }
  ],
  "graphic": [
+  {
+   "year": "2026",
+   "company": "wkndrs",
+   "title": "japan mall open",
+   "desc": "*ai credit",
+   "img": "assets/work/graphic/2026_wkndrs_japan_mall_open/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/graphic/2026_wkndrs_japan_mall_open/01.jpg"
+    },
+    {
+     "img": "assets/work/graphic/2026_wkndrs_japan_mall_open/02.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "delivery notice",
+   "desc": "*ai credit",
+   "video": "assets/work/graphic/2025_wkndrs_delivery_notice/01.mp4",
+   "silent": true
+  },
   {
    "year": "2024",
    "company": "lmc",
@@ -1240,6 +1301,13 @@ const WORKS = {
   }
  ],
  "video": [
+  {
+   "year": "2026",
+   "company": "wkndrs",
+   "title": "fw26 teaser",
+   "desc": "edit, music",
+   "video": "assets/work/video/2026_wkndrs_z_fw26_teaser.mp4"
+  },
   {
    "year": "2026",
    "company": "wkndrs",
