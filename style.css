@@ -8,11 +8,9 @@ header{position:relative;z-index:5;text-align:center;padding:14px 16px 0}
 header a{font:italic bold 17px var(--en);text-decoration:none}
 sup{font-size:11px;line-height:0}
 #six{padding:8px 7px;margin:-8px -7px -8px -6px;border:0;background:none;font:italic bold 12px var(--en);text-decoration:underline}
-#year{position:absolute;left:0;right:0;top:100%;margin:2px 0 0;font:italic bold 14px/1.4 var(--en)}
-/* 옛날 웹 무지개 글자: 색이 부드럽게 흘러감 */
-#year span{white-space:pre;color:#e6004c;animation:rainbow 4.8s linear infinite}
-@keyframes rainbow{0%,100%{color:#e6004c}16.66%{color:#ff7300}33.33%{color:#d9a400}50%{color:#00a53c}66.66%{color:#0070ff}83.33%{color:#9b1fe8}}
-@media (prefers-reduced-motion:reduce){#year span{animation:none}#year span:nth-child(6n+2){color:#ff7300}#year span:nth-child(6n+3){color:#d9a400}#year span:nth-child(6n+4){color:#00a53c}#year span:nth-child(6n+5){color:#0070ff}#year span:nth-child(6n){color:#9b1fe8}}
+/* 6 을 누르면 나오는 옛날 웹 3D 글자 (assets/year.gif) */
+#year{position:absolute;left:0;right:0;top:100%;margin:-23px 0 0;line-height:0;pointer-events:none}
+#year img{max-width:100%;height:auto}
 #sea{position:fixed;inset:0 0 56px;overflow:hidden}
 .fish{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;will-change:transform}
 .fish img{height:auto;image-rendering:pixelated}
@@ -25,7 +23,9 @@ figure img,figure video{display:block;width:100%;height:auto}
 figure video{aspect-ratio:auto 3/4}   /* 불러오기 전에도 자리를 잡아둠 */
 .cap{display:block;width:100%;margin-top:7px;padding:0;border:0;background:none;font:italic bold 14px/1.4 var(--en);text-decoration:underline;overflow-wrap:anywhere}
 p.cap{margin:7px 0 0;text-decoration:none}   /* 설명 없는 제목은 밑줄 없음 */
-.mark{display:inline-block}
+/* [+] : 똑바로 선 회색 글씨(sound off 와 같은 색), 기호를 칸 가운데에 둬서 좌우 여백을 같게 */
+.mark{display:inline-block;margin-left:4px;font:normal normal 12px/1 Arial,Helvetica,sans-serif;color:#999;white-space:nowrap}
+.sign{display:inline-block;width:8px;text-align:center}
 .desc{margin:7px 0 0;font-size:14px;overflow-wrap:anywhere;word-break:keep-all}
 a:focus-visible,button:focus-visible{outline:1px dotted currentColor;outline-offset:3px}
 .desc{white-space:pre-line;color:#1a1a1a}   /* 작업 설명은 K90 */

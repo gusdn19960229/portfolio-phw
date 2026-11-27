@@ -155,10 +155,6 @@ function closeViewer(){
 }
 /* 이름 옆 6 을 누르면 연차 설명 */
 const six=document.getElementById("six"), year=document.getElementById("year");
-const letter=(t,i)=>{ const e=document.createElement("span"); e.textContent=t; e.style.animationDelay=-i*.2+"s"; e.setAttribute("aria-hidden","true"); return e; };
-const phrase=year.textContent;
-year.setAttribute("aria-label",phrase); year.setAttribute("role","note");
-year.replaceChildren(...[...phrase].map((t,i)=>letter(t,phrase.length-i)));
 six.onclick=()=>{ year.hidden=!year.hidden; six.setAttribute("aria-expanded",String(!year.hidden)); };
 /* 영상은 화면에 보이는 것만 재생. 화면 밖으로 나가면 멈추고 소리도 끔 */
 const watcher=new IntersectionObserver(list=>list.forEach(({target:v,isIntersecting})=>{
@@ -189,10 +185,10 @@ function show(){
       const b=el(w.desc?"button":"p","cap c",title);
       const p=w.desc?el("p","desc",w.desc):null;
       if(p){
-        const mark=el("span","mark","[+]"); mark.setAttribute("aria-hidden","true");
-        b.type="button"; b.append(" ",mark); p.hidden=true; p.id="d"+i;
+        const mark=el("span","mark"), sign=el("span","sign","+"); mark.append("[",sign,"]"); mark.setAttribute("aria-hidden","true");
+        b.type="button"; b.append(mark); p.hidden=true; p.id="d"+i;
         b.setAttribute("aria-controls",p.id); b.setAttribute("aria-expanded","false");
-        b.onclick=()=>{ p.hidden=!p.hidden; mark.textContent=p.hidden?"[+]":"[-]"; b.setAttribute("aria-expanded",String(!p.hidden)); };
+        b.onclick=()=>{ p.hidden=!p.hidden; sign.textContent=p.hidden?"+":"\u2212"; b.setAttribute("aria-expanded",String(!p.hidden)); };
       }
       fig.append(media);
       /* 여러 컷 중 첫 컷이 영상인 작업: 누르면 크게 보기 */
