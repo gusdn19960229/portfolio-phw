@@ -3,6 +3,30 @@ const WORKS = {
   {
    "year": "2025",
    "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_ss26/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_ss26/01.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_ss26/02.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_ss26/03.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_ss26/04.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_ss26/05.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
    "title": "ss26 koinseoul",
    "desc": "",
    "img": "assets/work/apparel/2025_wkndrs_z_ss26_koinseoul/01.jpg",
