@@ -23,20 +23,35 @@ const WORKS = {
      "img": "assets/work/apparel/2024_lmc_newera_world_tee/05.jpg"
     }
    ]
+  },
+  {
+   "year": "2024",
+   "company": "lmc",
+   "title": "hahaha",
+   "desc": "",
+   "img": "assets/work/apparel/2024_lmc_hahaha/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2024_lmc_hahaha/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2024_lmc_hahaha/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2024_lmc_hahaha/03.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2024_lmc_hahaha/04.webp"
+    },
+    {
+     "img": "assets/work/apparel/2024_lmc_hahaha/05.jpg"
+    }
+   ]
   }
  ],
  "archive": [
   {
-   "year": "2026",
-   "company": "회사명",
-   "title": "작업제목 01",
-   "desc": "여기에 작업 설명이 들어갑니다. 무엇을 만들었고 어떤 역할을 했는지 짧게 적어주세요.",
-   "img": "assets/work/archive/2026_company_title01/01.jpg",
-   "slides": [
-    {
-     "img": "assets/work/archive/2026_company_title01/01.jpg"
-    }
-   ]
+   "img": "assets/work/archive/2026_company_title01/01.jpg"
   }
  ],
  "campaign": [

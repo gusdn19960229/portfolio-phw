@@ -14,11 +14,13 @@ const sea=document.getElementById("sea"), folder=document.getElementById("folder
 const rnd=(a,b)=>a+Math.random()*(b-a);
 /* 서로 확실히 구분되는 색 12개를 섞어서 하나씩 나눠줌: 12개까지는 겹치지 않음 */
 const COLORS=["#e6002d","#f26a00","#b58900","#6f8f00","#00962f","#008c8c","#0088d8","#1a2fe0","#7a1fe0","#c400c4","#ff2e93","#8a4510"];
+/* 첫 화면의 빨강은 맨 밑 do not feed them 전용 */
+const RED=COLORS[0];
 function paint(root){
   let deck=[];
   const hidden=e=>e.closest("[hidden]")?1:0;   /* 보이는 글자부터 색을 받음 */
   [...root.querySelectorAll(".c")].sort((a,b)=>hidden(a)-hidden(b)).forEach(e=>{
-    if(!deck.length){ deck=[...COLORS]; for(let i=deck.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [deck[i],deck[j]]=[deck[j],deck[i]]; } }
+    if(!deck.length){ deck=COLORS.filter(x=>x!==RED||!document.body.classList.contains("home")); for(let i=deck.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [deck[i],deck[j]]=[deck[j],deck[i]]; } }
     e.style.color=deck.pop();
   });
 }
@@ -153,6 +155,43 @@ function closeViewer(){
   removeEventListener("keydown",viewer.key); viewer.box.remove(); document.body.style.overflow="";
   viewer.from.focus({preventScroll:true}); viewer=null;
 }
+/* archive: 바닥에 깔린 사진 더미. 끌어서 치우고, 누르면 크게 보기 */
+function pile(items){
+  const floor=el("div","floor"), n=items.length;
+  /* 사진이 많을수록 조금씩 작게 */
+  const base=Math.max(80,Math.min(176,Math.min(innerWidth,innerHeight)*.256*Math.min(1,Math.pow(14/Math.max(n,1),.25))));
+  /* 한곳에 몰리지 않게 칸을 나눠 한 장씩 놓고, 칸 안에서 크게 흩트림 */
+  const cols=Math.max(1,Math.round(Math.sqrt(n*innerWidth/innerHeight))), rows=Math.ceil(n/cols);
+  const order=items.map((w,i)=>[Math.random(),w,i]).sort((a,b)=>a[0]-b[0]);
+  const cells=order.map((o,i)=>i).sort(()=>Math.random()-.5);
+  let top=n;
+  order.forEach(([,w,id],z)=>{
+    const b=el("button","photo"); b.type="button"; b.setAttribute("aria-label",`archive ${id+1}`);
+    const m=el(w.video?"video":"img"), size=Math.round(base*rnd(.7,1.15));
+    if(w.video){ m.muted=m.loop=m.playsInline=true; m.preload="metadata"; m.src=w.video+"#t=0.001"; } else { m.src=w.img; m.alt=""; m.draggable=false; }
+    m.style.maxWidth=m.style.maxHeight=size+"px";
+    const c=cells[z]%cols, r=Math.floor(cells[z]/cols);
+    let x=(c+.5+rnd(-.55,.55))/cols, y=(r+.5+rnd(-.55,.55))/rows;
+    x=.5+(x-.5)*.74; y=.5+(y-.5)*.66;   /* 가운데로 모아서 뭉텅이 느낌 */
+    const set=()=>{ b.style.left=x*100+"%"; b.style.top=y*100+"%"; };
+    const edge=Math.round(size*.64);   /* 처음 놓을 때는 위아래·양옆이 잘리지 않게 */
+    const keep=v=>`clamp(${edge}px,${v*100}%,calc(100% - ${edge}px))`;
+    b.style.transform=`translate(-50%,-50%) rotate(${rnd(-17,17).toFixed(1)}deg)`; b.style.zIndex=z; b.style.left=keep(x); b.style.top=keep(y);
+    let from=null, moved=false;
+    b.onpointerdown=e=>{ if(e.button)return; x=b.offsetLeft/floor.clientWidth; y=b.offsetTop/floor.clientHeight; from={px:e.clientX,py:e.clientY,x,y}; moved=false; b.style.zIndex=++top; b.setPointerCapture(e.pointerId); };
+    b.onpointermove=e=>{
+      if(!from)return;
+      const dx=e.clientX-from.px, dy=e.clientY-from.py;
+      if(!moved&&Math.hypot(dx,dy)<6)return;
+      moved=true;
+      x=Math.max(0,Math.min(1,from.x+dx/floor.clientWidth)); y=Math.max(0,Math.min(1,from.y+dy/floor.clientHeight)); set();
+    };
+    b.onpointerup=b.onpointercancel=()=>{ from=null; };
+    b.onclick=e=>{ if(moved&&e.detail)return; openViewer([w],"archive",b); };
+    b.append(m); floor.append(b);
+  });
+  return floor;
+}
 /* 이름 옆 6 을 누르면 연차 설명 */
 const six=document.getElementById("six"), year=document.getElementById("year");
 six.onclick=()=>{ year.hidden=!year.hidden; six.setAttribute("aria-expanded",String(!year.hidden)); };
@@ -170,7 +209,13 @@ function show(){
   foods.splice(0).forEach(f=>f.img.remove());
   document.body.classList.toggle("home",!d);
   sea.hidden=!!d; folder.hidden=!d; folder.replaceChildren();
-  if(d){
+  const heap=d&&d.name==="archive";
+  document.body.classList.toggle("pile",!!heap);
+  if(heap){
+    folder.append(el("h1","c",d.name),pile(d.works)); window.scrollTo(0,0);
+    folder.querySelectorAll("video").forEach(v=>watcher.observe(v));
+  }
+  else if(d){
     const grid=el("div","grid");
     d.works.forEach((w,i)=>{
       const fig=el("figure"); let media;

@@ -29,6 +29,14 @@ const works = {};
 
 for (const dir of readdirSync(root + "assets/work", { withFileTypes: true }).filter(d => d.isDirectory())) {
   const base = `assets/work/${dir.name}/`;
+  /* archive 는 사진 더미: 안에 있는 모든 사진·영상이 낱장 하나씩 (파일명·하위폴더 상관없음) */
+  if (dir.name === "archive") {
+    const walk = path => readdirSync(root + path, { withFileTypes: true }).filter(e => !e.name.startsWith("."))
+      .sort((a, b) => nfc(a.name).localeCompare(nfc(b.name), "en", { numeric: true }))
+      .flatMap(e => e.isDirectory() ? walk(path + e.name + "/") : isMedia(e.name) ? [{ [kind(e.name)]: url(path + e.name) }] : []);
+    works[dir.name] = walk(base);
+    continue;
+  }
   const files = readdirSync(root + base).filter(n => !n.startsWith("."));
   const texts = new Map(files.filter(n => extname(n).toLowerCase() === ".txt").map(n => [stemOf(n), n]));
   const entries = readdirSync(root + base, { withFileTypes: true }).filter(e => !e.name.startsWith("."));
