@@ -1,6 +1,147 @@
 const WORKS = {
  "apparel": [
   {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "fw25",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_w_fw25/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_w_fw25/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_w_fw25/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_w_fw25/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "fw25",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_v_fw25/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_v_fw25/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_v_fw25/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_v_fw25/03.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_v_fw25/04.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "fw25",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_u_fw25/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_u_fw25/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_u_fw25/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_u_fw25/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "fw25",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_t_fw25/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_fw25/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_fw25/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_fw25/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "fw25 olga",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_t_a_fw25_olga/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_a_fw25_olga/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_a_fw25_olga/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_a_fw25_olga/03.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_a_fw25_olga/04.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_a_fw25_olga/05.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_a_fw25_olga/06.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "fw25 olga",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_t_0_fw25_olga/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_0_fw25_olga/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_0_fw25_olga/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_0_fw25_olga/03.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_t_0_fw25_olga/04.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss25",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_ss25/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_ss25/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_ss25/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_ss25/03.webp"
+    }
+   ]
+  },
+  {
    "year": "2024",
    "company": "lmc",
    "title": "newera world tee",
@@ -25,26 +166,26 @@ const WORKS = {
    ]
   },
   {
-   "year": "2024",
+   "year": "2023",
    "company": "lmc",
    "title": "hahaha",
    "desc": "",
-   "img": "assets/work/apparel/2024_lmc_hahaha/01.webp",
+   "img": "assets/work/apparel/2023_lmc_hahaha/01.webp",
    "slides": [
     {
-     "img": "assets/work/apparel/2024_lmc_hahaha/01.webp"
+     "img": "assets/work/apparel/2023_lmc_hahaha/01.webp"
     },
     {
-     "img": "assets/work/apparel/2024_lmc_hahaha/02.webp"
+     "img": "assets/work/apparel/2023_lmc_hahaha/02.webp"
     },
     {
-     "img": "assets/work/apparel/2024_lmc_hahaha/03.jpg"
+     "img": "assets/work/apparel/2023_lmc_hahaha/03.jpg"
     },
     {
-     "img": "assets/work/apparel/2024_lmc_hahaha/04.webp"
+     "img": "assets/work/apparel/2023_lmc_hahaha/04.webp"
     },
     {
-     "img": "assets/work/apparel/2024_lmc_hahaha/05.jpg"
+     "img": "assets/work/apparel/2023_lmc_hahaha/05.jpg"
     }
    ]
   }
