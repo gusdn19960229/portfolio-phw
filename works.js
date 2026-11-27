@@ -5,6 +5,63 @@ const WORKS = {
    "company": "wkndrs",
    "title": "ss26",
    "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_zzzz_ss26/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_zzzz_ss26/01.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_zzzz_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_zzzz_ss26/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_zzz_ss26/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_zzz_ss26/01.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_zzz_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_zzz_ss26/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_zz_ss26/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_zz_ss26/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_zz_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_zz_ss26/03.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_zz_ss26/04.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
    "img": "assets/work/apparel/2025_wkndrs_z_z_ss26/01.jpg",
    "slides": [
     {
@@ -21,6 +78,207 @@ const WORKS = {
     },
     {
      "img": "assets/work/apparel/2025_wkndrs_z_z_ss26/05.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_ss26/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_ss26/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_ss26/03.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_ss26/04.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_ss26/05.jpg"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_ss26/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_ss26/01.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_ss26/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_ss26/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_ss26/01.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_ss26/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_ss26/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_ss26/01.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_ss26/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_ss26/01.jpg",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_ss26/01.jpg"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_ss26/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_ss26/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_ss26/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_ss26/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_ss26/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_ss26/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_ss26/02.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_ss26/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_ss26/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_ss26/02.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_ss26/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_ss26/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_ss26/03.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_0_ss26/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_0_ss26/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_0_ss26/03.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_0_ss26/04.webp"
+    }
+   ]
+  },
+  {
+   "year": "2025",
+   "company": "wkndrs",
+   "title": "ss26",
+   "desc": "",
+   "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_0_0_ss26/01.webp",
+   "slides": [
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_0_0_ss26/01.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_0_0_ss26/02.webp"
+    },
+    {
+     "img": "assets/work/apparel/2025_wkndrs_z_z_0_0_0_0_0_0_0_0_0_0_0_ss26/03.webp"
     }
    ]
   },
